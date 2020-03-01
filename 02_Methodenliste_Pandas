@@ -1,0 +1,184 @@
+import pandas as pd
+import numpy as np
+
+
+## Einlesen eines CSV
+df = pd.read_csv("C:/Users/test/Documents/Udemy/Python/Kursmaterialien-2019/Kursmaterialien/data/astronauts.csv" , delimiter = ",") # wichtig: Über Delimiter kannst du
+                                                                                                                                 # Semikolon angeben und er liest die Datei richtig ein
+## Ausgabe der ersten 5 Einträge für Übersicht der Daten
+print(df.head())
+
+## Auf eine Spalte eines `DataFrames` zugreifen
+df["Name"]
+
+print(df["Name"]) # Ausgabe Index + Einträge Name
+
+for name in df["Name"]: # Ausgabe mit Schleife ohne Indexbezeichnung
+    print(name)
+
+## Auf eine Zeile eines `DataFrames` zugreifen
+df.iloc[0]
+
+## Auf einen Index eines DataFrames zugreifen
+print(df.index[0]) # Ausgabe des Index - [0] Ausgabe von dem ersten Eintrag etc.
+
+## Auf einzelne Spalten auf einen Zeileneintrag zugreifen.
+entry = df.iloc[0]
+print(entry["Birth Date"])
+
+# Oder kurze Schreibweise:
+print(df.iloc[0]["Birth Date"])
+
+## List slicing` - Notation können wir auch Bereiche von Zeilen auswählen, z.B. die letzten fünf Zeilen des DataFrames:
+df.iloc[-5:]
+
+## Die `iterrows()`- Methode wandelt das DataFrame so um, dass es leicht macht mit einer `for`-Schleife dadurch zugehen.
+for row in df.iterrows():
+    print(row)
+
+# Genauer werden quasi mit iterrows() für jeden Eintrag zweielementige Tupel gebildet, die aus dem Index des Eintrags und den Daten des Eintrags bestehen.
+for s, i, in df.iterrows(): # Hierbei können die Element nach belieben benannt werden.
+    print(s)
+
+for s, i, in df.iterrows(): # Hierbei können die Element nach belieben benannt werden.
+    print(i["Name"]) # Es kann immer über die zweite Variable (i) die Spalte definiert werden für das Abfragen.
+
+## Daten mit Vergleichen filtern
+df["Year"] < 1990 # Abfrage über alle Einträge die kleiner 1990 sind
+print (df["Year"] < 1990) # Ausgabe sind Booleans
+
+
+df[df["Year"] < 1990] # Abfrage über alle Einträge die kleiner 1990 sind
+print(df[df["Year"] < 1990]) # Ausgabe ist das ganze Dataframe
+
+## Mehrfache Filter
+# Natürlich kannst du auch mehrere Filter an ein `DataFrame` anlegen.
+# Achte darauf, wenn du in mehrfachen Stufen filtern möchtest, gefilterte `DataFrames` in neuen Variablen zwischenzuspeichern:
+df2 = df[df["Year"] < 1990]
+df3 = df2[df2["Gender"] == "Male"]
+df3
+
+## Sortieren von Daten mit sort.value - Funktion:
+df4= df.sort_values("Name", ascending = False) # ACHTUNG! Zusatz von inplace=True oder inplace=False beachten!!!!!
+
+## Differenz von 2 Spalten nach der größten bzw. kleinsten Zahl sortiert
+df5 = (df['Year'] - df['Group']).idxmax() # größte Zahl
+df6 = (df['Year'] - df['Group']).idxmin() # kleinste Zahl
+
+## Einfügen einer Spalte in Dataframe:
+df4['neue Spalte aus Multipliaktion'] = df4['Year'] * df4['Group']
+
+## Ausgabe des Indexeintrages
+print(df4.index[0])
+
+## Konvertieren von Rows in Columns
+df7=df4.transpose()
+
+## Zeileneinträge Ausgabe bei der nach einem Teilwort gesucht wird
+df8 = df4[df4['Name'].str.startswith("William")]
+
+## Filterung einer Spalte mit mehreren Bedingungen und beibehalten eines DataFrames:
+status1 = df4['Status'] == 'Management'
+status2 = df4['Status'] == 'Active'
+df9 = df4[(status1|status2)]
+
+## Zusammenfügen von DataFrames mit pd.merge oder join - Funktion
+import pandas as pd
+# used Data
+dfEnergy = pd.read_excel('Energy Indicators.xls', skiprows=17, skipfooter=38)
+
+
+dfEnergy = dfEnergy[['Unnamed: 2', 'Petajoules', 'Gigajoules', '%']]  # Auswahl der benötigten Columns
+dfEnergy.columns = ["Country", "Energy Supply", "Energy Supply per Capita", "% Renewable"]  # Rename columns
+dfEnergy['Energy Supply'] = dfEnergy['Energy Supply'].replace('...', np.NaN)  # replace Function
+dfEnergy['Energy Supply per Capita'] = dfEnergy['Energy Supply per Capita'].replace('...', np.NaN)
+dfEnergy['Energy Supply'] = dfEnergy['Energy Supply'] * 1000000  # Multiplikation ganze column mit Zahl
+
+dfEnergy['Country'] = dfEnergy['Country'].str.replace('\(.*\)', ' ')  # replace einen Klammer mit String-Inhalt
+dfEnergy['Country'] = dfEnergy['Country'].str.replace('([0-9]+)$', ' ')  # replace Zahlen aus einem String
+
+# Umbenennen von einzelnen Einträgen in einer bestimmten Spalte
+dfEnergy['Country'] = dfEnergy['Country'].replace(
+    {'Korea, Rep.': 'South Korea', 'United States of America': 'United States',
+     'United Kingdom of Great Britain and Northern Ireland': 'United Kingdom',
+     'China, Hong Kong Special Administrative Region': 'Hong Kong'})
+GDP = pd.read_csv('world_bank.csv', skiprows=4)
+GDP['Country Name'] = GDP['Country Name'].replace(
+    {"Korea, Rep.": "South Korea", "Iran, Islamic Rep.": "Iran", "Hong Kong SAR, China": "Hong Kong"})
+
+GDP = GDP[['Country Name', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015']]
+ScimEn = pd.read_excel('scimagojr-3.xlsx')
+ScimEn = ScimEn[0:15]
+
+# Zusammenführen von Datasets Möglichkeit 1 mit  pd.Merge Funktion
+dfmerge = pd.merge(ScimEn, dfEnergy, how='inner', on='Country')# on= verwenden wenn in beiden DF der gleiche Index gegeben ist.
+dfmerge2 = pd.merge(dfmerge, GDP, how='inner', left_on='Country', right_on='Country Name').set_index('Country') # Wenn Index auf beiden seiten nicht gleich ist, dann für Linken DF mit left_on = und für den rechten DF mit right_on den Index auswählen.
+dfmerge3 = dfmerge2[['Rank', 'Documents', 'Citable documents', 'Citations', 'Self-citations', 'Citations per document', 'H index',
+           'Energy Supply', 'Energy Supply per Capita', '% Renewable', '2006', '2007', '2008', '2009', '2010', '2011',
+           '2012', '2013', '2014', '2015']] # Auswahl der zu anzeigenden Spalten aus den 3 Datasets.
+
+# Zusammenführen von Datasets Möglichkeit 2 mit  Join-Funktion
+dfjoined1 = ScimEn.set_index('Country').join(dfEnergy.set_index('Country')) # setzen des Indexes mit set_index('Auswahl der zu verwendeten Spalten als Index)
+dfjoined2 = dfjoined1.join(GDP.set_index('Country Name'))
+dfjoined3 = dfjoined2[['Rank', 'Documents', 'Citable documents', 'Citations', 'Self-citations', 'Citations per document', 'H index',
+                     'Energy Supply', 'Energy Supply per Capita', '% Renewable', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015']]
+
+dfEnergy = pd.read_excel('Energy Indicators.xls', skiprows=17, skipfooter=38)
+
+## Filtern des Daframes nach benötigte Spalten
+dfEnergy = dfEnergy[['Unnamed: 2', 'Petajoules', 'Gigajoules', '%']]  # Auswahl der benötigten Columns
+
+## Umbennen der Spalten
+dfEnergy.columns = ["Country", "Energy Supply", "Energy Supply per Capita", "% Renewable"]  # Rename columns
+
+## Werte in einer Spalte überschreiben
+dfEnergy['Energy Supply'] = dfEnergy['Energy Supply'].replace('...', np.NaN)  # replace Function
+dfEnergy['Energy Supply per Capita'] = dfEnergy['Energy Supply per Capita'].replace('...', np.NaN)
+
+## Werte in einer Spalte mit Zahl multiplizieren
+dfEnergy['Energy Supply'] = dfEnergy['Energy Supply'] * 1000000  # Multiplikation ganze column mit Zahl
+
+## Werte in einer Spalte überschreiben mit speziellen Anforderungen!!!
+dfEnergy['Country'] = dfEnergy['Country'].str.replace('\(.*\)', ' ')  # replace einen Klammer mit String-Inhalt
+dfEnergy['Country'] = dfEnergy['Country'].str.replace('([0-9]+)$', ' ')  # replace Zahlen aus einem String
+
+##Umbenennen von einzelnen Einträgen in einer bestimmten Spalte
+dfEnergy['Country'] = dfEnergy['Country'].replace({'Korea, Rep.': 'South Korea','United States of America': 'United States','United Kingdom of Great Britain and Northern Ireland': 'United Kingdom','China, Hong Kong Special Administrative Region': 'Hong Kong'})
+
+#Methode Reset Index: Index Parameter werden gelöscht und dabei als erste Spalte platziert.
+Top15=dfjoined3
+Top15 = Top15.reset_index()
+
+
+
+## Map Funktion: Zuordnung von Ländern (Zeileneinträge einer Column) auf Kontinente (Kategorien)
+ContinentDict = {'China': 'Asia',
+                 'United States': 'North America',
+                 'Japan': 'Asia',
+                 'United Kingdom': 'Europe',
+                 'Russian Federation': 'Europe',
+                 'Canada': 'North America',
+                 'Germany': 'Europe',
+                 'India': 'Asia',
+                 'France': 'Europe',
+                 'South Korea': 'Asia',
+                 'Italy': 'Europe',
+                 'Spain': 'Europe',
+                 'Iran': 'Asia',
+                 'Australia': 'Australia',
+                 'Brazil': 'South America'}
+Top15["Continent"] = Top15["Country"].map(ContinentDict) # Map Funktion Zuordnung von Kategorien auf Zeileneinträge einer Spalte.
+
+
+## Groupby Funktion: Es werden einezelne Länder zu Kontinenten zusammengefasst. wird zum zählen der Länder pro Kontinent verwendet
+size = Top15.groupby("Continent")["Country"]#.count()
+print(size)
+
+# Groupby Funktion mit Rechenformel: Es werden aus gruppierten Daten mathematische Berechnungen durchgeführt.
+Top15["Population"]=Top15["Energy Supply"]/Top15["Energy Supply per Capita"] #
+pop_sum = Top15.groupby("Continent")["Population"].sum() # Summe berechnen von 2 Spalten
+pop_mean = Top15.groupby("Continent")["Population"].mean() # Median berechnen von 2 Spalten
+pop_std = Top15.groupby("Continent")["Population"].std() # Standardabweichung berechnen von 2 Spalten
+
+## Concat Funktion: Verketten von Listen zu einem Dataframe
+# new_df = pd.concat([size, pop_sum, pop_mean, pop_std], axis = 1, ignore_index=True)
