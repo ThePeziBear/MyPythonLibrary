@@ -180,6 +180,11 @@ pop_sum = Top15.groupby("Continent")["Population"].sum() # Summe berechnen von 2
 pop_mean = Top15.groupby("Continent")["Population"].mean() # Median berechnen von 2 Spalten
 pop_std = Top15.groupby("Continent")["Population"].std() # Standardabweichung berechnen von 2 Spalten
 
+# Groupby Funktion bei der 2 Werte gruppiert werden & danach eine Rechenoperation ausgeführt wird.
+
+pop_sum_continent = Top15.groupby(['Continent', 'Rank']).sum()
+
+
 ## Concat Funktion: Verketten von Listen zu einem Dataframe
 # new_df = pd.concat([size, pop_sum, pop_mean, pop_std], axis = 1, ignore_index=True)
 
