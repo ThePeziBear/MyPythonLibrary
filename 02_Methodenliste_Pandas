@@ -182,3 +182,6 @@ pop_std = Top15.groupby("Continent")["Population"].std() # Standardabweichung be
 
 ## Concat Funktion: Verketten von Listen zu einem Dataframe
 # new_df = pd.concat([size, pop_sum, pop_mean, pop_std], axis = 1, ignore_index=True)
+
+# Remove Column form Dataframe mit drop-Funktion
+df10 = df9.drop('Group', axis = 1)
