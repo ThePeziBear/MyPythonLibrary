@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 
 df= pd.read_csv('Occupation_occupation.table', sep='|', index_col = 'user_id')
+# variante anstelle index_col --> df = df.reset_index() --> df = df.set_index()
 df.head()
 
 df['gender_m'] = df['gender'] == 'M'
