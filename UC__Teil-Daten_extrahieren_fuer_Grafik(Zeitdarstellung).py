@@ -1,3 +1,5 @@
+#used Methods: strip(), list(). append
+
 # Beispiel: Geburtstatistik
 # Es wird aus einem großen Datensatz eine Teilmenge extrahiert für eine grafische Aufbereitung OHNE PANDAS.
 import matplotlib
