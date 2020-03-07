@@ -1,3 +1,6 @@
+#used methods: median(), astype, Vergleichsoperatoren mit pandas
+
+
 import pandas as pd
 import numpy as np
 
