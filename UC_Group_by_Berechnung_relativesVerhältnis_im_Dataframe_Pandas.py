@@ -1,3 +1,6 @@
+#used Functions: read_csv(), head(), groupby().count, groupby().sum, sort_values, apply.(lambda)
+
+
 import pandas as pd
 import numpy as np
 
