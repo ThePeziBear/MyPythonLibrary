@@ -1,3 +1,5 @@
+#used methods: strip(). split(), items() function is used to iterator over (column name, Series) pair
+
 # Aufgabe: Dictionaries Lese die ../data/names.csv - Datei ein und berechne, welcher Name insgesamt in den gesamten USA am häufigsten vergeben wurde.
 
 with open("C:/Users/test/Documents/Udemy/Python/Kursmaterialien-2019/Kursmaterialien/data/names.csv", "r") as file:
