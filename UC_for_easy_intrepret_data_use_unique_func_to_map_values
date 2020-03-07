@@ -1,3 +1,5 @@
+# used Funktions - unique(), create dictionary with zip
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -13,4 +15,4 @@ value = df.fruit_name.unique()
 
 lookup_fruit=dict(zip(key,value))
 
-value
+print(value)
