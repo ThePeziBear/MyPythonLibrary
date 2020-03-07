@@ -1,3 +1,5 @@
+#used methods: df.max() - df.min() from columns, sort_values, first_valid_index()
+
 import pandas as pd
 censusDF = pd.read_csv('census.csv')
 censusDF.head()
