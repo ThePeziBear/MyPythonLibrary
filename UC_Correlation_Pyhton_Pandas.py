@@ -1,3 +1,5 @@
+# used Methods: read_excel, replace()(Einträge in Spalte ändern), pd.merge(), corr()
+
 import pandas as pd
 import numpy as np
 
