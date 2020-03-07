@@ -1,3 +1,4 @@
+# used methods: strip(), split, Vergleichsoperatoren mit if function
 # Aufgabe!
 # Finde heraus, wie oft der Name "Max" als männlicher Vorname in Kalifornien zwischen 1950 und 2000 (jeweils einschließlich) vergeben wurde!
 # Verwende dazu die bereitgestellte .csv - Datei (../data/names.csv)!
