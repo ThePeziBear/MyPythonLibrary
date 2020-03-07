@@ -1,4 +1,4 @@
-# used Funktions - unique(), create dictionary with zip
+# used Functions - unique(), create dictionary with zip
 
 import numpy as np
 import matplotlib.pyplot as plt
