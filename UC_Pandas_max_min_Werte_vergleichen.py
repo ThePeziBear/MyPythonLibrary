@@ -1,3 +1,5 @@
+#used methods: df.max() - df.min() from columns, sort_values, first_valid_index()
+
 import pandas as pd
 censusDF = pd.read_csv('census.csv')
 censusDF.head()
@@ -15,7 +17,7 @@ def answer_seven():
                                                                                             # pro Zeile gesucht. mit (axis='index' or 0) wird der höchste Wert der Spalte gesucht
     sort_diff_country = max_diff_country.sort_values(ascending=False)
 
-    index_of_max_diff_country = sort_diff_country.first_valid_index() # Gibt den den ersten Index Eintrag des Dataframes wider
+    index_of_max_diff_country = sort_diff_country.first_valid_index() # Gibt  den ersten Index Eintrag des Dataframes wider
 
     return censusDF["CTYNAME"][index_of_max_diff_country] # Verknüpfung des Indexeintrages mit dem Citynamen.
 

@@ -1,3 +1,6 @@
+#used methods: pd.read_csv, replace(), pd.merge(), map()Zuordnung von Kategorien auf Zeileneinträge einer Spalte,
+# set.index(), groupby().count, groupby().mean, groupby().std, groupby().sum
+
 import pandas as pd
 import numpy as np
 

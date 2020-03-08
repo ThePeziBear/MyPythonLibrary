@@ -1,0 +1,97 @@
+Python Allgemein
+
+FOR Schleife: liste1=['Max', 'Moritz','Monika'] (04_05_Kontrollstrukturen)
+for i in liste1: - Ausgabe aller Listeneinträge
+    print (i)
+for i in range (1,11) - 11 mal Ausführen der Anweisung aus CodeZeile 7 (04_05_Kontrollstrukturen)
+    summe = summe + 1
+
+if-elif Funktion: (04_05_Kontrollstrukturen)
+currency = "HKD"
+if currency == "$":
+    print("US-Dollar")
+elif currency == "¥":
+    print("Japanischer Yen")
+else:
+    print("Sonst")
+
+liste1.strip() - Entefernen des Absatzzeichens \ln (UC_Teil-daten_extrahieren_ohne Visualisierung)
+liste1.split('Zeichen bei dem gespillted gehört z.B ;') (UC_Teil-daten_extrahieren_ohne Visualisierung)
+dictionary.items() - Ausgabe eines Dictionaries als Liste (ohne : zum besseren verarbeiten) (UC_Dictionaries_Geburtstatistk)
+For-Schleife und IF Abfrage auf Basis einer Vergleichsoperation (UC Teil Daten extrahieren ohne Visualsierung)
+
+liste1.append('Variablen die angehängt gehören') - Zusammenführen von Listen oder Liste mit zusätzlichen Einträgen
+liste1.remove('Eintrag') - Löschen eines Eintrages in Liste
+
+
+Python Pandas:
+
+Einlesen vom DataFrame:
+df = pd.read_csv() - Einlesen CSV
+df = pd.table_csv() - Einlesen diverser Formate automatisch
+
+Zugriff auf DataFrame:
+df["Name der Spalte"] - Zugriff auf Spalte(Column)
+for name in df["Name des df"] - Zugriff auf Spalte als Series ohne Index
+df.iloc[0] - Zugriff auf Spalte als Series ohne Index
+df.index - Zugriff auf den Index.
+df.index[0] - Zugriff auf ersten Indexeintrag
+df.iloc[0]['Spaltenname'] - Zugriff auf die erste Zeile einer gewählten Spalte
+df.iloc[0:4] - Zugriff via List Slicing auf der Einträge zwischen 1 und 5
+df.iloc[-5:] - Zugriff via List Slicing auf die letzten 5 Einträge
+iterrows() -  Zugriff auf jede Zeile des Dataframes mit einer For Schleife.
+df['Name der Spalte'].idxmax() - Zugriff auf größte Zahl der Spalte
+df['Name der Spalte'].idxmin() - Zugriff auf kleinste Zahl der Spalte
+df[df['Spaltenname'].str.startswith('gesuchtes Teilwort') - durchsuchen einer Spalte auf Teilzeichen
+df.first_valid_index() - Zugriff auf ersten Index Eintrag (UC_Pandas_max_min_Werte_vergleichen)
+
+Filtern vom DataFrame:
+df['Name der Spalte'] < int(1990) - Ausgabe Booleans ob Vergleich stimmt
+df[df['Name der Spalte'] < int(1990)] - Ausgabe des  Dataframes bei Boolean True
+df_new = df[['Spalte1', 'Spalte2', 'SpalteN']]  # Auswahl der benötigten Columns für Dataframe
+
+Mehrfach filtern von DataFrame:
+df2 = df[df['Year'] < 1990] - 1. Ausgabe Filterung auf Personen unter 1990
+df3 = df2[df2['Gender'] =='Male] - 2 Ausgabe Filterung Male und Filter aus 1. Ausgabe --> Filter Personen < 1990 & Male
+-------------------------------------------------------------------------------------------------------------
+status1 = df['Status'] == 'Management' - Ausgabe Personen mit MGMT
+status2 = df['Status'] == 'Active' - Ausgabe Personen die noch Active sind
+df_new = df[(status1|status2) - Ausgabe Dataframe aufgrund Filterung MGMT & Active
+
+df.unique() - Ausgabe der Zeilen ohne Mehrfachausgabe z.B. Apple kommt nur 1 mal vor und nicht 500mal (UC_for_easy_interpret_data_use_unique func_to_map_values)
+
+Sortieren, Einfügen, Konvertieren, Umbenennen, Überschreiben, Löschen, gruppieren in einem DataFrames
+df.sort_values('Name der Spalte', ascending = False) - Sortierung der Werte auf(ascending=True) oder absteigend (ascending=False)
+df['Bezeichnung neues Spalte'] = df[Spaltenname 1] * df[Spaltenname 2] - Anlegen neuer Spalte mit einer Multiplikation
+df.transponse - Konvertieren von Rows in columns
+df.columns=df[['neuer Spaltenname1', 'neuer Spaltenname2', 'neuer SpaltennameN']] - Umbenennen der Spaltenname eines DataFrames
+df['Spaltenname mit Änderung der Z-Einträge'].replace('...', np.NaN) - Ersetzen von ... durch np.NAN (UC_Correlation_Python_Pandas)
+df['Spaltenname mit Änderung der Z-Einträge'].str.replace('\(.*\)', ' ')  - Ersetzen einer Klammer mit String-Inhalt (UC_Correlation_Python_Pandas)
+df['Spaltenname mit Änderung der Z-Einträge'].str.replace('([0-9]+)$', ' ')  - Ersetzen einer Klammer mit String-Inhalt (UC_Correlation_Python_Pandas)
+df['Spaltenname'] = df['Spaltenname'].replace({'Key1': 'Value1','Key2': 'Value2'}) - Ersetzen von einem bestimmten Zeileneintrag durch einen anderen Zeileneintrag (UC_Correlation_Python_Pandas)
+df.drop('zu löschende Spalte', axis = 1) - Spalte in Dataframe wird gelöscht
+df.groupby('Spalte die gruppiert wird')['Spalte für Rechenoperation'].sum() - Gruppieren von Spalte und anschließend Rechenoperation (UC_Group_by_Berechnung_relativesVerhältnis)
+df['Spaltenname']=df['Spaltenname'].apply(lambda x: 1 if x== 'Vergleichsvariable' else 0) (UC_Group_by_Berechnung_relativesVerhältnis_im_Dataframe_Pandas)
+df['Spaltenname'].astype(int) - Werte in eine Zahl umwandeln (Booleans auch möglich)
+
+Zusammenführen von DataFrames und Listen
+Merge-Funktion für DataFrame: (UC_Group_by_Maping_von_Daten_Pandas)
+dfmerge1 = pd.merge(DataFrame1, DataFrame2, how='inner', left_on='Country', right_on='Country Name').set_index('Auswahl Spalte als Index')
+dfmerge2 = dfmerge2[['Spalte1', 'Spalte2', 'SpalteN']] # Auswahl der zu anzeigenden Spalten aus den 2 Datasets.
+-------------------------------------------------------------------------------------------------------------
+Join-Funktion für DataFrame: (UC_Group_by_Maping_von_Daten_Pandas)
+dfjoined1 = DataFrame1_index('AuswahlIndexSalte').join(DataFrame2.set_index('AuswahlIndexSalte')) # setzen des Indexes mit set_index('Auswahl der zu verwendeten Spalten als Index)
+dfjoined2 = dfjoined2[['Spalte1', 'Spalte2', 'SpalteN']] # Auswahl der zu anzeigenden Spalten aus den 2 Datasets.
+-------------------------------------------------------------------------------------------------------------
+Concat Funktion zur Erstellung DataFrame
+df = pd.concat([list1, list2, list3], axis = 1, ignore_index=True) - zusammenführe von Listen zu einem Dataframe
+
+Erstellen von einem Dictionary: (UC_for_easy_intrepret_data_use_unique_func_to_map_values)
+1. Step: key = [Liste] 2. Step: value = [liste] 3.Step: dict(zip(key,value))
+
+Berechnungen DataFrame:
+corr()
+df['Spaltenname'].median() - Berechnung Median einer Spalte
+max(axis='columns') - min(axis='columns') -  höchste Wert des Zeileneintrags über Dataframe (z.B. Zeile 1) minus niedrigster Wert des Zeileneintrags über Dataframe (z.B. Zeile 2)
+max(axis='index') - min(axis='index') - höchster Wert einer Spalte minus niedrigsten Wert einer Spalte
+df('Spaltenname1') > df('Spaltenname') --> Boolean - Mit outpout.astype(int) Ausgabe von 0 & 1  (UC_Vergleichsoperation_Pandas)
