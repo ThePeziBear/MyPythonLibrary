@@ -8,3 +8,15 @@ plt.plot([1,2,3],[4,5,4], color = '#21c4ed', linestyle='dashed', marker='o')
 # marker = https://matplotlib.org/api/markers_api.html#module-matplotlib.markers
 plt.show() # Starten der Anzeige
 
+# verschieden Diagrammtypen
+plt.pie([1, 2, 3])
+plt.show()
+
+plt.bar([1, 2, 4], [5, 6, 5])
+plt.show
+
+plt.scatter([1, 2, 4], [5, 6, 5])
+plt.show()
+
+plt.scatter([1, 2, 4], [5, 6, 5], color = "#ff0000", marker = "x")
+plt.show()
