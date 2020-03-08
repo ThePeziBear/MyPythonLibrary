@@ -15,10 +15,10 @@ elif currency == "¥":
 else:
     print("Sonst")
 
-strip() (UC_Teil-daten_extrahieren_ohne Visualisierung)
-split() (UC_Teil-daten_extrahieren_ohne Visualisierung)
-items() (UC_Dictionaries_Geburtstatistk.py
-Vergleichsoperation mit IF (UC Teil Daten extrahieren ohne Visualsierung
+liste1.strip() - Entefernen des Absatzzeichens \ln (UC_Teil-daten_extrahieren_ohne Visualisierung)
+liste1.split('Zeichen bei dem gespillted gehört z.B ;') (UC_Teil-daten_extrahieren_ohne Visualisierung)
+dictionary.items() - Ausgabe eines Dictionaries als Liste (ohne : zum besseren verarbeiten) (UC_Dictionaries_Geburtstatistk)
+For-Schleife und IF Abfrage auf Basis einer Vergleichsoperation (UC Teil Daten extrahieren ohne Visualsierung)
 
 liste1.append('Variablen die angehängt gehören') - Zusammenführen von Listen oder Liste mit zusätzlichen Einträgen
 liste1.remove('Eintrag') - Löschen eines Eintrages in Liste
