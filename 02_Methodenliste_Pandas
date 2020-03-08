@@ -11,8 +11,6 @@ print(df.head())
 ## Auf eine Spalte eines `DataFrames` zugreifen
 df["Name"]
 
-print(df["Name"]) # Ausgabe Index + Einträge Name
-
 for name in df["Name"]: # Ausgabe mit Schleife ohne Indexbezeichnung
     print(name)
 
@@ -20,7 +18,7 @@ for name in df["Name"]: # Ausgabe mit Schleife ohne Indexbezeichnung
 df.iloc[0]
 
 ## Auf einen Index eines DataFrames zugreifen
-print(df.index[0]) # Ausgabe des Index - [0] Ausgabe von dem ersten Eintrag etc.
+df.index[0] # Ausgabe des Index - [0] Ausgabe von dem ersten Eintrag etc.
 
 ## Auf einzelne Spalten auf einen Zeileneintrag zugreifen.
 entry = df.iloc[0]
@@ -32,7 +30,7 @@ print(df.iloc[0]["Birth Date"])
 ## List slicing` - Notation können wir auch Bereiche von Zeilen auswählen, z.B. die letzten fünf Zeilen des DataFrames:
 df.iloc[-5:]
 
-## Die `iterrows()`- Methode wandelt das DataFrame so um, dass es leicht macht mit einer `for`-Schleife dadurch zugehen.
+## Die `iterrows()`- Möglichkeit auf einen beliebigen Zeileneintrag mit einer `for`-Schleife zuzugreifen.
 for row in df.iterrows():
     print(row)
 
@@ -49,7 +47,7 @@ print (df["Year"] < 1990) # Ausgabe sind Booleans
 
 
 df[df["Year"] < 1990] # Abfrage über alle Einträge die kleiner 1990 sind
-print(df[df["Year"] < 1990]) # Ausgabe ist das ganze Dataframe
+print(df[df["Year"] < 1990]) # Ausgabe ist des Dataframe beim Boolean ist True
 
 ## Mehrfache Filter
 # Natürlich kannst du auch mehrere Filter an ein `DataFrame` anlegen.
@@ -68,8 +66,6 @@ df6 = (df['Year'] - df['Group']).idxmin() # kleinste Zahl
 ## Einfügen einer Spalte in Dataframe:
 df4['neue Spalte aus Multipliaktion'] = df4['Year'] * df4['Group']
 
-## Ausgabe des Indexeintrages
-print(df4.index[0])
 
 ## Konvertieren von Rows in Columns
 df7=df4.transpose()
