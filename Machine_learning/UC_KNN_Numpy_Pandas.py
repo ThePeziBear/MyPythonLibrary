@@ -136,7 +136,7 @@ def answer_one():
     return cancerdf
 
 
-answer_one().head()
+answer_one()
 
 #Question 2
 #What is the class distribution? (i.e. how many instances of malignant (encoded 0) and how many benign (encoded 1)?)
