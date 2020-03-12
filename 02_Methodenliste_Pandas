@@ -98,7 +98,7 @@ dfEnergy['Country'] = dfEnergy['Country'].replace(
     {'Korea, Rep.': 'South Korea', 'United States of America': 'United States',
      'United Kingdom of Great Britain and Northern Ireland': 'United Kingdom',
      'China, Hong Kong Special Administrative Region': 'Hong Kong'})
-GDP = pd.read_csv('world_bank.csv', skiprows=4)
+GDP = pd.read_csv('Use_Cases_Pandas/world_bank.csv', skiprows=4)
 GDP['Country Name'] = GDP['Country Name'].replace(
     {"Korea, Rep.": "South Korea", "Iran, Islamic Rep.": "Iran", "Hong Kong SAR, China": "Hong Kong"})
 
