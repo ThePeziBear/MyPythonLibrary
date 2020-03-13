@@ -26,6 +26,10 @@ liste1.remove('Eintrag') - Löschen eines Eintrages in Liste
 
 Python Pandas:
 
+Erstellen einer Series:
+Serie = pd.Series(variable1,variable2)
+new_Name_series = series.rename['neuer Name']
+
 Einlesen vom DataFrame:
 df = pd.read_csv() - Einlesen CSV
 df = pd.table_csv() - Einlesen diverser Formate automatisch
