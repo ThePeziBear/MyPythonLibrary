@@ -1,0 +1,46 @@
+.important = Klasse abfragen
+#test123 = id abfragen
+span = Element abfragen
+.abssatz1 p = Klasse abfrage auf p (verschachtelte Variante)
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+        <title>Ich bin der Seitentitel</title>
+        <style type="text/css">
+            .important {
+                color: red;
+             }
+            #test123 {
+                color: orange;
+             }
+             span {
+                color: green;
+             }
+
+             .absatz1 p {
+                font-weight: bold;
+             }
+        </style>
+    </head>
+    <body>
+        <div class="absatz1">
+            <p>Absatz1: Ich bin ein Absatz</p>
+        </div>
+        <div class="absatz2">
+            <p>Absatz2: Ich bin ein Absatz</p>
+        </div>
+
+        <p class="important"> Ich bin ein Absatz!</p>
+        <p class="important"> Ich bin ein Absatz!</p>
+        <p id="test123"> Ich bin ein Absatz!</p>
+        <p class="important"> Ich bin ein Absatz!</p>
+        <p> Ich bin ein Absatz!</p>
+        <p> Ich bin ein Absatz!</p>
+
+        <span> Ich bin en anderer Text!</span>
+
+    </body>
+</html>
