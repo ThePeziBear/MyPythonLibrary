@@ -24,5 +24,8 @@ for p in doc.find_all("p"):
     print(p.attrs) # Ausgabe der Attribute
     print(p.text) # Ausgabe des Textes
 
+doc = BeautifulSoup(r.text, 'html.parser') # Einlesen des HTML-Codes
+print(doc.select('.card'))
+
 
 
