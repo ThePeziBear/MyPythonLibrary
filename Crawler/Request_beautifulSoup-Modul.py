@@ -1,4 +1,4 @@
-#Used Methods: r.__dict__, r.status_code, r.text, html.parser, p.attrs, p.text, select_one (CSS-Selector), .text
+#Used Methods: r.__dict__, r.status_code, r.text, html.parser, p.attrs, p.text, select_one (CSS-Selector), .text, asdfd
 
 # Requests Modul ermöglicht das runterladen von HTML-Code
 
