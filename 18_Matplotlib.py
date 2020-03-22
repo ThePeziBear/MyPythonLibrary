@@ -13,7 +13,7 @@ plt.pie([1, 2, 3])
 plt.show()
 
 plt.bar([1, 2, 4], [5, 6, 5])
-plt.show
+plt.show()
 
 plt.scatter([1, 2, 4], [5, 6, 5])
 plt.show()
