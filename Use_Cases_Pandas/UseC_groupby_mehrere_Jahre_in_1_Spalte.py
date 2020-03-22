@@ -11,6 +11,7 @@ df.head()
 group_Anzahl = df.groupby('Jahr')['Anzahl'].sum()
 Jahre = df['Jahr'].unique()
 plt.bar(Jahre,group_Anzahl)
+plt.show()
 
 dictionary_recommended = {'Hepatitis A+B' : 'recommended',
              'Hepatitis A' : 'recommended',
@@ -27,6 +28,7 @@ group = df2.groupby('Jahr')['Anzahl'].sum()
 Jahre = df['Jahr'].unique()
 
 plt.bar(Jahre,group)
+plt.show()
 
 dictionary_kids = {'Masern-Mumps-Roeteln' : 'kids',
                    'Hib (Haemophilus influenzae b)' : 'kids',
@@ -45,4 +47,4 @@ group = df2.groupby('Jahr')['Anzahl'].sum()
 Jahre = df['Jahr'].unique()
 
 plt.bar(Jahre,group)
-plt.show
+plt.show()
