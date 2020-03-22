@@ -1,4 +1,4 @@
-used Methods: groupby(), sum(), unique()
+#used Methods: groupby(), sum(), unique()
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,21 +12,37 @@ group_Anzahl = df.groupby('Jahr')['Anzahl'].sum()
 Jahre = df['Jahr'].unique()
 plt.bar(Jahre,group_Anzahl)
 
-dictionary = {#'Hepatitis A+B' : 'aerztlich empfohlen',
-             #'Hepatitis A' : 'aerztlich empfohlen',
-             #'Hepatitis B' : 'aerztlich empfohlen',
-             'Grippe' : 'aerztlich empfohlen',
-             #'FSME' : 'aerztlich empfohlen',
-             #'Meningokokken' : 'aerztlich empfohlen'
-             #'Masern-Mumps-Roeteln' : 'aerztlich empfohlen'
+dictionary_recommended = {'Hepatitis A+B' : 'recommended',
+             'Hepatitis A' : 'recommended',
+             'Hepatitis B' : 'recommended',
+             'Grippe' : 'recommended',
+             'FSME' : 'recommended',
              }
 
-df['empfohlen'] = df['Impfung'].map(dictionary)
+df['recommended'] = df['Impfung'].map(dictionary_recommended)
 
-df2 = df[df['empfohlen'] == 'aerztlich empfohlen']
-df2
+df2 = df[df['recommended'] == 'recommended']
 group = df2.groupby('Jahr')['Anzahl'].sum()
 
 Jahre = df['Jahr'].unique()
 
 plt.bar(Jahre,group)
+
+dictionary_kids = {'Masern-Mumps-Roeteln' : 'kids',
+                   'Hib (Haemophilus influenzae b)' : 'kids',
+                   'Diphtherie-Tetanus-Keuchhusten' : 'kids',
+                   'Kinderlaehmung (Poliomyelitis)' : 'kids',
+                   'Hepatitis B' : 'kids',
+                   'Rotaviren' : 'kids',
+                   'Pneumokokken' : 'kids',
+                   }
+
+df['kids'] = df['Impfung'].map(dictionary_kids)
+
+df2 = df[df['kids'] == 'kids']
+group = df2.groupby('Jahr')['Anzahl'].sum()
+
+Jahre = df['Jahr'].unique()
+
+plt.bar(Jahre,group)
+plt.show
