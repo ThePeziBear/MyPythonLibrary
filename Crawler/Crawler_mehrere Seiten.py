@@ -1,4 +1,4 @@
-#Used Methods: class, def__init__, def(), urllib.parse (zur Anzeige von Bildern durch crawlen) html.parser, p.attrs, select_one (CSS-Selector), .text, asdfd
+#Used Methods: class, def__init__, def(), urllib.parse (zur Anzeige von Bildern durch crawlen) html.parser, p.attrs, select_one (CSS-Selector), .text,
 
 import requests
 from bs4 import BeautifulSoup
@@ -51,11 +51,11 @@ fetcher = ArticleFetcher()
 articles = fetcher.fetch() #Ausgabe der der CrawledArticles
 
 for article in articles: # Ausgabe aller titel der Artikel
-      print(article.title)
+     print(article.title)
 
 nextsite = fetcher.nextpage()
 print(nextsite)
 
-for article in articles: # Ausgabe aller titel der Artikel
-      print(article.title)
+#for article in articles: # Ausgabe aller titel der Artikel
+#      print(article.title)
 
