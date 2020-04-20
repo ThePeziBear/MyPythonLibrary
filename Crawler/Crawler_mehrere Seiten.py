@@ -29,7 +29,7 @@ class ArticleFetcher(): # Extraktion der Artikel - die Website wird runtergelade
             emoji = card.select_one('.emoji') # Ausgabe der Emojis aller Artikel
             content = card.select_one('.card-text').text # Ausgabe des Textes
             title = card.select('.card-title span')[1].text # Ausgabe der Title
-            image = urljoin(url, card.select_one('img').attrs['src']) # Ausgabe der Bilder mittels relativen link
+            image = urljoin(url, card.select_one('img').attrs['src']) # Ausgabe der Bilder aufgrund von urljoin wird der link absolut gesetzt
 
             crawled = CrawledArticle(title, emoji, content, image)
             articles.append(crawled)
@@ -40,6 +40,7 @@ class ArticleFetcher(): # Extraktion der Artikel - die Website wird runtergelade
     def nextpage(self):
         r = requests.get('http://python.beispiel.programmierenlernen.io/index.php')  # Hole die Website
         doc = BeautifulSoup(r.text, 'html.parser')  # Einlesen des HTML-Codes mittels parser
+
         for navigation in doc.findAll('a'):
             navigation.get('href')
         return navigation
