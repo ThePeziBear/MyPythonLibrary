@@ -18,32 +18,45 @@ class CrawledArticle(): # Klasse repräsentiert einen einzelnen Artikel - wird  
 
 class ArticleFetcher(): # Extraktion der Artikel - die Website wird runtergeladen, Website wird geparsed und Atikel werden zurückgegeben
     def fetch(self):
-        url='http://python.beispiel.programmierenlernen.io/index.php'
-        r = requests.get('http://python.beispiel.programmierenlernen.io/index.php') #Hole die Website
+        url='http://python.beispiel.programmierenlernen.io/index.php' #Initiale Adresse für das Abrufen
         time.sleep(1)
-        print(url)
-        doc = BeautifulSoup(r.text, 'html.parser')  # Einlesen des HTML-Codes mittels parser
 
-        articles =[] # Hole mir mit der For Schleife alle Artikel die ich benötige
-        for card in doc.select('.card'): # Elemente einzeln betrachten
-            emoji = card.select_one('.emoji') # Ausgabe der Emojis aller Artikel
-            content = card.select_one('.card-text').text # Ausgabe des Textes
-            title = card.select('.card-title span')[1].text # Ausgabe der Title
-            image = urljoin(url, card.select_one('img').attrs['src']) # Ausgabe der Bilder aufgrund von urljoin wird der link absolut gesetzt
+        articles = []  # Hole mir mit der For Schleife alle Artikel die ich benötige in eine leere Liste
 
-            crawled = CrawledArticle(title, emoji, content, image)
-            articles.append(crawled)
+        while url != '': # While Schleife mit Ungleich - Rufe Solange die Website ab solange ein Button verfügbar ist.
+            print(url)
+            time.sleep(1)
+            r = requests.get(url)  # Hole die url
+            doc = BeautifulSoup(r.text, 'html.parser')  # Einlesen des HTML-Codes mittels parser
+
+            for card in doc.select('.card'): # Auslesen der einzelnen Artikel
+                emoji = card.select_one('.emoji') # Ausgabe der Emojis aller Artikel
+                content = card.select_one('.card-text').text # Ausgabe des Textes
+                title = card.select('.card-title span')[1].text # Ausgabe der Title
+                image = urljoin(url, card.select_one('img').attrs['src']) # Ausgabe der Bilder aufgrund von urljoin wird der link absolut gesetzt
+
+                crawled = CrawledArticle(title, emoji, content, image)
+                articles.append(crawled)
+
+            next_button = doc.select_one('.navigation .btn')# Abrufen des relativen Links für den Button 'NÄCHSTE SEITE'
+            if next_button: # If Bedingung für Schleife für "Solange ein "Button" verfügbar ist
+                next_link = next_button.attrs['href'] #Abrufen des relativen Links für den Button 'NÄCHSTE SEITE'
+                next_href = urljoin(url, next_link) # Abrufen des absoluten Links
+                url = next_href
+            else:
+                url = ''
+
 
         return articles # Rückgabe der Artikel
 
 
-    def nextpage(self):
-        r = requests.get('http://python.beispiel.programmierenlernen.io/index.php')  # Hole die Website
-        doc = BeautifulSoup(r.text, 'html.parser')  # Einlesen des HTML-Codes mittels parser
+    #def nextpage(self):
+    #    r = requests.get('http://python.beispiel.programmierenlernen.io/index.php')  # Hole die Website
+    #    doc = BeautifulSoup(r.text, 'html.parser')  # Einlesen des HTML-Codes mittels parser
 
-        for navigation in doc.findAll('a'):
-            navigation.get('href')
-        return navigation
+    #    for navigation in doc.findAll('a'):
+    #        navigation.get('href')
+    #    return navigation
 
 
 
@@ -53,10 +66,4 @@ articles = fetcher.fetch() #Ausgabe der der CrawledArticles
 
 for article in articles: # Ausgabe aller titel der Artikel
      print(article.title)
-
-nextsite = fetcher.nextpage()
-print(nextsite)
-
-#for article in articles: # Ausgabe aller titel der Artikel
-#      print(article.title)
 
