@@ -10,10 +10,12 @@ T=20
 EK = invest * EK_Quote
 FK = invest * FK_Quote
 
-list=[]
-for e in range (1,20):
-    tilgung = invest - (invest/20)
-    tilgung2= tilgung- (invest/20)
-    list.append(tilgung2)
+list1=[]
+list2=[]
+for z in range (1,20):
+    tilgung = int(invest) - int((invest/20))
+    list1.append(tilgung)
 
-print(list)
+
+
+print(list1)
