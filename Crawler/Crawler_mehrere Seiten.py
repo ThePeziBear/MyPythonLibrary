@@ -1,9 +1,12 @@
-#Used Methods: class, def__init__, def(), urllib.parse (zur Anzeige von Bildern durch crawlen) html.parser, p.attrs, select_one (CSS-Selector), .text,
+#Used Methods: class, def__init__, def(), urllib.parse (zur Anzeige von Bildern durch crawlen) html.parser, p.attrs, select_one (CSS-Selector), .text, csv- Import
+
+import time
+from urllib.parse import urljoin  # verwenden für einen relativen Pfad. Abfrage von Bildern
 
 import requests
 from bs4 import BeautifulSoup
-import time
-from urllib.parse import urljoin # verwenden für einen relativen Pfad. Abfrage von Bildern
+
+
 urljoin('http://python.beispiel.programmierenlernen.io/index.php', '/img/1.jpg')
 
 
@@ -67,3 +70,11 @@ articles = fetcher.fetch() #Ausgabe der der CrawledArticles
 for article in articles: # Ausgabe aller titel der Artikel
      print(article.title)
 
+fetcher = ArticleFetcher()
+
+import csv
+with open('crawler_output.csv', 'w', newline='') as csvfile: # Benennen der csvDatei
+    articlewriter = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL) # Einstellungen für die Ausgabe
+
+    for article in fetcher.fetch(): #für jeden Artikel von meinen extrahierten Artikel
+        articlewriter.writerow([article.emoji,article.title, article.image, article.content])
