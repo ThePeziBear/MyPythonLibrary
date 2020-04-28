@@ -11,20 +11,31 @@ T_rate = invest/T
 EK = invest * EK_Quote
 FK = invest * FK_Quote
 
+
+
 list1 = []
+list2 = []
+n = 20
+value = 182000
+rate = 0.015
+for i in range(20):
+    result = value
+    list1.append(result)
+
+df1 = pd.DataFrame(list1)
+print (df1)
 
 
-def calc():
-    n = 20
-    value = 182000
-    rate = 0.015
-    for i in range(20):
-        result2 = value - (value / n)
-        list1.append(result2)
-        return list1
+for i in range(20):
+    result = value/n
+    list2.append(result)
+
+df2 = pd.DataFrame(list2)
+print (df2)
 
 
-calc()
+
+
 
 # result = value * (1+rate) ** 20
 
