@@ -1,45 +1,48 @@
 import pandas as pd
-import numpy as np
 
+# Lists for Dataframe
 list1 = []
 list2 = []
 M = []
+
+# parameter for calculation
 n = 20
 value = 182000
 rate = 0.015
 
+# creating arrays for DataFrame
 for i in range(n):
     result = value
     list1.append(result)
 
 df1 = pd.DataFrame(list1)
-df1.columns = ["I"]
+df1.columns = ["capital"]
 
 for i in range(n):
     result = value/n
     list2.append(result)
 
 df2 = pd.DataFrame(list2)
-df2.columns = ["T"]
+df2.columns = ["repayment"]
 
 for i in range(n):
     result = 0 + i
     M.append(result)
 
+#creating Dataframe
+list_to_df = pd.concat([df1, df2], axis=1, sort=False)
+df = pd.DataFrame(list_to_df)
 
+# calculations and adding columns to dataframe
+df['mulitplikator'] = M
+df['refund/year']=df['repayment']*df['mulitplikator']
+df['residual debt'] = df['capital'] - df['refund/year']
+df['interest'] = df['residual debt'] * rate
 
-result = pd.concat([df1, df2], axis=1, sort=False)
-df = pd.DataFrame(result)
+interest_total= df['interest'].sum()
+repayment_total= df['repayment'].sum()
 
-df['M'] = M
-df['R']=df['T']*df['M']
-df['RS'] = df['I'] - df['R']
-df['annual_i'] = df['RS'] * rate
+payment_total = interest_total+repayment_total
 
-zinsen_gesamt= df['annual_i'].sum()
-Tilgung_gesamt= df['T'].sum()
-
-Rückzahlung_gesamt = zinsen_gesamt+Tilgung_gesamt
-
-Zinnsatz_FK = (Rückzahlung_gesamt/value)-1
+interest_debt_capital = (payment_total/value)-1
 
