@@ -42,7 +42,7 @@ input_text = StringVar()
 # Once all the functions are defined then comes the main section where you will start defining the structure of the calculator inside the GUI.
 
 # The first thing is to create a frame for the input field
-input_frame = Frame(window, width = 312, height = 50, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
+input_frame = Frame(window, width = 312, height = 50, bd = 0, highlightbackground = "green", highlightcolor = "green", highlightthickness = 1)
 input_frame.pack(side = TOP)
 
 
