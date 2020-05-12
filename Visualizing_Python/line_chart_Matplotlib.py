@@ -13,4 +13,5 @@ plt.title("Nominal GDP")
 plt.ylabel("Billions of $")
 
 #Darstellung des Plots
+
 plt.show()
