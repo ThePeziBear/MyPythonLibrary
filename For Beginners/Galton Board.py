@@ -1,23 +1,27 @@
+from random import randint
 import matplotlib.pyplot as plt
-import random
 
-TOTAL_BALLS = 500
-TOTAL_LINES = 10
+balls = 100  # number of balls
+levels = 10  # number of base slots
 
-for i in range(0, TOTAL_BALLS):
-    total = []
-    for i in range(0, TOTAL_LINES):
 
-        x = random.uniform(0, 1)
-        if x >= 0.5:
-            round(x)
-        else:
-            round(x)
+# you can edit the values for different size of board, and different number of balls
+def galton():
+    result = []
+    for i in range(0, levels):
+        result.append(0)
 
-        total.append(round(x))
+    for i in range(balls):
+        course = [1]
+        for x in range(levels):
+            course.insert((x + 1) * randint(0, 1), 0)
+        result[course.index(1)] += 1
+    # subres is a subresult of one ball.
+    # '1' is the position of the ball. in each galton row it goes left or right - practically there is randomly an additional
+    # '0' at the beginning or at the end. 'res' collects each ball's 'subres'
+    return result
 
-        distribution = sum(total)
-        print(distribution)
 
+galton()
 
 
