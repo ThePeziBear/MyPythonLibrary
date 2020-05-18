@@ -1,27 +1,34 @@
-from random import randint
 import matplotlib.pyplot as plt
+import random
 
 balls = 100  # number of balls
-levels = 10  # number of base slots
+p = 0.5
 
 
-# you can edit the values for different size of board, and different number of balls
-def galton():
+def distribution(p):
+    choice = random.uniform(0, 1)
+    if choice < p:
+        choice = 1
+    else:
+        choice = 0
+    return choice
+
+
+def galton(balls, p):
     result = []
-    for i in range(0, levels):
-        result.append(0)
+    for i in range(0, balls):
+        course = 0
+        for x in range(0, 10):
+            choice = distribution(p)
+            if choice == 1:
+                course = course + 1
 
-    for i in range(balls):
-        course = [1]
-        for x in range(levels):
-            course.insert((x + 1) * randint(0, 1), 0)
-        result[course.index(1)] += 1
-    # subres is a subresult of one ball.
-    # '1' is the position of the ball. in each galton row it goes left or right - practically there is randomly an additional
-    # '0' at the beginning or at the end. 'res' collects each ball's 'subres'
+        result.append(course)
     return result
 
 
-galton()
+x=galton(balls,p)
+y=[1,2,3,4,5,6,7,8,9,10]
 
-
+fig, axs = plt.subplots(sharey=True, tight_layout=True)
+axs.hist(x, bins=y)
