@@ -1,3 +1,4 @@
+# KNN - algorithm without library
 import matplotlib.pyplot as plt
 from collections import Counter
 import math
@@ -59,3 +60,4 @@ plt.title("House Owners")
 plt.xlabel("Age")
 plt.ylabel("Income")
 plt.show()
+
