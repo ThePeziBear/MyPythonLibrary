@@ -42,7 +42,7 @@ neighbors = get_neighbors(dataset_scaled, dataset_scaled[0], 1)
 for neighbor in neighbors:
     print(neighbor)
 
-new_data=[1, 0.53]
+new_data=[0.7, 0.8]
 
 def predict_classification(train, test_row, num_neighbors):
     neighbors = get_neighbors(train, test_row, num_neighbors)
