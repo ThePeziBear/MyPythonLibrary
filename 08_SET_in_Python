@@ -1,0 +1,23 @@
+#Set - Bei Versuch noch einen 2. gleichen Eintrag hinzuzufügen wird dieser Befehl nicht ausgeführt.
+s={"Hallo","Welt"}
+s.add('Mars')#hinzufügen von einem Eintrag
+print(s)
+
+text="Hallo Welt Hallo Mars Hallo Welt"
+words=set()
+for i in text.split(' '):
+    words.add(i)
+
+print(words)
+
+#**Aufgabe:**
+
+#Öffne die ../data/names.csv - Datei als .csv-Datei und berechne die Anzahl der verschiedenen Vornamen, die in dieser Datei aufgelistet sind!
+import csv
+with open("../data/names.csv") as file:
+    names=set()
+    for line in file:
+        data=line.strip().split(",")
+        names.add(data[1])
+    print(names)
+    print(len(names))
