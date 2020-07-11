@@ -15,9 +15,9 @@ print(words)
 #Öffne die ../data/names.csv - Datei als .csv-Datei und berechne die Anzahl der verschiedenen Vornamen, die in dieser Datei aufgelistet sind!
 import csv
 with open("../data/names.csv") as file:
-    names=set()
+    names=set() # erstellen einer Set-Funktion
     for line in file:
-        data=line.strip().split(",")
+        data=line.strip().split(",") # splitten der Einträge
         names.add(data[1])
     print(names)
     print(len(names))
