@@ -45,3 +45,22 @@ print(d["Budapest"]) # Fehler bei Budapest
 print(d.get("Saigon"))
 print(d.get("Budapest")) # Hier bekomme ich ein None zurück
 
+
+
+#Aufgabe: PriorityQueue¶
+#Ermittle den 5.-häufigsten Vornamen, der in den USA vergeben wurde! Lies dazu die ../data/names.csv - Datei ein.
+# Verwende dazu zuerst ein Dictionary, mit dem du die Häufigkeit der Vornamen zählst und anschließend eine PriorityQueue, um die Top 5 Vornamen zu ermitteln.
+
+with open("../data/names.csv") as file:
+    namelist=[]
+    for line in file:
+        datalist=line.strip().split(",")
+        namelist.append(datalist)
+
+
+names=[]
+for line in namelist:
+    data=line[1]
+    names.append(data)
+
+names
