@@ -105,15 +105,6 @@ get_neighbors(dataset,new_data,1)
 Peters_decision_2=predict(dataset,new_data,dic,1)
 print(str(Peters_decision_2) + (" - Peter will not buy a House"))
 
-plt.plot(age_no,income_no,color='blue',marker='o',linestyle='none')
-plt.plot(age_yes,income_yes,color='red',marker='o',linestyle='none')
-plt.plot(age_new,income_new,color='green',marker='x',linestyle='none')
-
-plt.title("House Owners")
-plt.xlabel("Age")
-plt.ylabel("Income")
-plt.show()
-
 # Conlusio
 #In der Prediction im Modell "KNN scaled Data" sind Age & Income gleich gewichtet. Die Daten im  Modell "KNN non scaled Data" ist aufgrund der ungleichen Werte (x=50, y=80000) wesentlich ungleicher gewichtet.
 # Das Income hat eine extrem dominanten Einfluss auf den Vektor. Somit ergibt sich der Punkt (x=25,y=78000) als nearest Neighbor, wobei dieser falsch ist.
