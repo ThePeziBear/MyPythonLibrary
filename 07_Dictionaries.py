@@ -64,3 +64,25 @@ for line in namelist:
     names.append(data)
 
 names
+
+
+d={}
+
+for element in names:
+    if element in d:
+        d[element] = d[element]+1
+    else:
+        d[element]=1
+
+import queue
+
+q = queue.PriorityQueue()
+
+for element, number in d.items():
+    q.put((-number, element))
+
+print(q.get())
+print(q.get())
+print(q.get())
+print(q.get())
+print(q.get())
