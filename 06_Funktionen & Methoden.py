@@ -113,7 +113,6 @@ def create_plot(**plot_params):# **Hier im Beispiel werden also Parameter in ein
                                 # Dadurch können variable Parameter übergeben werden.
     plt.plot([1, 2, 3], [5, 6, 5], **plot_params) #Diese Parameter werden dann in plt.plot([1, 2, 3], [5, 6, 5], **plot_params) wieder aus
                                                  # dem Dictionary entpackt und in normale Funktionsparameter umgewandelt.
-
     plt.show
 
 
