@@ -94,3 +94,27 @@ def add_shelf(article):
 
 add_shelf("Rubik's Cube")
 print(shelf)
+
+
+def calculate_max(*params): # * --> dadurch werden alle Werte in ein Tupel übergeben & es können Operationen durchgeführt werden.
+    current_max = params[0]
+    for i in params:
+        if i > current_max:
+            current_max = i
+    return current_max
+
+
+calculate_max(1, 2, 3)
+
+% matplotlibinline
+import matplotlib.pyplot as plt
+
+def create_plot(**plot_params):# **Hier im Beispiel werden also Parameter in ein Dictionary gepackt (**plot_params, Zeile 4).
+                                # Dadurch können variable Parameter übergeben werden.
+    plt.plot([1, 2, 3], [5, 6, 5], **plot_params) #Diese Parameter werden dann in plt.plot([1, 2, 3], [5, 6, 5], **plot_params) wieder aus
+                                                 # dem Dictionary entpackt und in normale Funktionsparameter umgewandelt.
+
+    plt.show
+
+
+create_plot(color='red', linestyle='dashed')
