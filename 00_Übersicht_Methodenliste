@@ -22,8 +22,9 @@ For-Schleife und IF Abfrage auf Basis einer Vergleichsoperation (UC Teil Daten e
 
 liste1.append('Variablen die angehängt gehören') - Zusammenführen von Listen oder Liste mit zusätzlichen Einträgen
 liste1.remove('Eintrag') - Löschen eines Eintrages in Liste
-liste1.sort() - Sortierung der Liste aufsteigend
-liste1.sort(reverse=True) - Sortierung der Liste absteigend
+liste1.sort() - Sortierung der Liste aufsteigend (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
+liste1.sort(reverse=True) - Sortierung der Liste absteigend (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
+liste.sort(key=len) - Alternative schreibweise für die Sortierung nach Namenslänge (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
 
 
 #######################Python Pandas:######################################################
