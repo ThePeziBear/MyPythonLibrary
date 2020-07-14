@@ -1,4 +1,4 @@
-#Verwendete Funktionen: Set(), Sort()
+#Verwendete Funktionen: Set(), Sort(), lambda
 
 #Set - Bei Versuch noch einen 2. gleichen Eintrag hinzuzufügen wird dieser Befehl nicht ausgeführt.
 s={"Hallo","Welt"}
@@ -52,3 +52,22 @@ print(l)
 #Sortierung von Daten nach einem Dictionary
 d = {"Köln": "CGN", "Budapest": "BUD", "Saigon": "SGN"}
 print(sorted(d, reverse = True))
+
+#Sortierung der Daten mit Lambda:
+students = [
+    ("Max", 3),
+    ("Monika", 2),
+    ("Erik", 3),
+    ("Franziska", 1)
+]
+
+#Funktion ohne Lambda:
+def students_key(i):
+    return i[1]
+
+students.sort(key=students_key)
+print (students)
+
+#Funktion mit Lambda --> kompakte Schreibweise da ich keine seperate Funktion anlegen muss
+students.sort(key=lambda i: i[1])
+print(students)
