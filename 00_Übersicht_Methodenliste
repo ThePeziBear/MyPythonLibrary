@@ -1,4 +1,4 @@
-Python Allgemein
+####################Python Allgemein ############################################
 
 FOR Schleife: liste1=['Max', 'Moritz','Monika'] (04_05_Kontrollstrukturen)
 for i in liste1: - Ausgabe aller Listeneinträge
@@ -22,9 +22,11 @@ For-Schleife und IF Abfrage auf Basis einer Vergleichsoperation (UC Teil Daten e
 
 liste1.append('Variablen die angehängt gehören') - Zusammenführen von Listen oder Liste mit zusätzlichen Einträgen
 liste1.remove('Eintrag') - Löschen eines Eintrages in Liste
+liste1.sort() - Sortierung der Liste aufsteigend
+liste1.sort(reverse=True) - Sortierung der Liste absteigend
 
 
-Python Pandas:
+#######################Python Pandas:######################################################
 
 Erstellen einer Series:
 Serie = pd.Series(variable1,variable2) (UC_Klassifzierung_Rename_Array_Numpy)
