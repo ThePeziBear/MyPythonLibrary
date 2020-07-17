@@ -69,9 +69,7 @@ students.sort(key=students_key)
 print (students)
 
 #Beispiel für Funktion ohne Lambda
-
 tupels = [(10, 2), (4, 1), (0, 17), (3, 3), (5, 7), (11, 3)]
-
 
 def summe(x): # Berechnung Summe von element --> 10+2
     for element in x:
@@ -87,3 +85,10 @@ print(tupels)
 #Funktion mit Lambda --> kompakte Schreibweise da ich keine seperate Funktion anlegen muss
 students.sort(key=lambda i: i[1])
 print(students)
+
+
+
+#Beispiel für Funktion ohne Lambda
+tupels = [(10, 2), (4, 1), (0, 17), (3, 3), (5, 7), (11, 3)]
+tupels.sort(key=lambda i: i[0]+i[1])
+tupels
