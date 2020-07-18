@@ -82,6 +82,17 @@ tupels.sort(key = summe) #ACHTUNG: durch die Sort-Funktionen werden alle Einträ
 print(tupels)
 
 
+#Beispiel 2 für Funktion ohne Lambda
+
+def sort(x): # NICHT FERTIG!
+    for i in x:
+        y = i.split(" ")
+        return y[1]
+sort(names)
+names.sort(key=names)
+print(names)
+
+
 #Funktion mit Lambda --> kompakte Schreibweise da ich keine seperate Funktion anlegen muss
 students.sort(key=lambda i: i[1])
 print(students)
@@ -92,3 +103,4 @@ print(students)
 tupels = [(10, 2), (4, 1), (0, 17), (3, 3), (5, 7), (11, 3)]
 tupels.sort(key=lambda i: i[0]+i[1])
 tupels
+
