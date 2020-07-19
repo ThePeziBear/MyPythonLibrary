@@ -83,13 +83,12 @@ print(tupels)
 
 
 #Beispiel 2 für Funktion ohne Lambda
+names = ["Elif Else", "Sebastian Klarnamen", "Anna Boa", "Anton Adel", "Conny Coder", "Anne Wortmann", "Willy Cordes"]
 
-def sort(x): # NICHT FERTIG!
-    for i in x:
-        y = i.split(" ")
-        return y[1]
-sort(names)
-names.sort(key=names)
+def names_key(i):
+    return i.split()[1] #Splitfunktion bezieht sich auf das 2. Element
+
+names.sort(key=names_key)
 print(names)
 
 
