@@ -16,7 +16,8 @@ else:
     print("Sonst")
 
 liste1.strip() - Entefernen des Absatzzeichens \ln (UC_Teil-daten_extrahieren_ohne Visualisierung)
-liste1.split('Zeichen bei dem gespillted gehört z.B ;') (UC_Teil-daten_extrahieren_ohne Visualisierung)
+liste1.split('Zeichen bei dem gesplilted gehört z.B ;') (UC_Teil-daten_extrahieren_ohne Visualisierung)
+liste1.split()[1] #Splitfunktion bezieht sich auf das 2. Element (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
 dictionary.items() - Ausgabe eines Dictionaries als Liste (ohne : zum besseren verarbeiten) (UC_Dictionaries_Geburtstatistk)
 For-Schleife und IF Abfrage auf Basis einer Vergleichsoperation (UC Teil Daten extrahieren ohne Visualsierung)
 
