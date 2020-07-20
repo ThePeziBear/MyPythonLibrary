@@ -92,13 +92,23 @@ names.sort(key=names_key)
 print(names)
 
 
+#Beispiel 3 für Funktion ohne Lambda
+sentences = ["Sie liefen weiter den Strand entlang.", "Der Hund bellte laut.", "Er rutschte aus.", "Sie lachte."]
+
+def length(x):
+    return len(x)
+
+sentences.sort(key=length, reverse=True)
+sentences
+
+
 #Funktion mit Lambda --> kompakte Schreibweise da ich keine seperate Funktion anlegen muss
 students.sort(key=lambda i: i[1])
 print(students)
 
 
 
-#Beispiel für Funktion ohne Lambda
+#Beispiel für Funktion mit Lambda
 tupels = [(10, 2), (4, 1), (0, 17), (3, 3), (5, 7), (11, 3)]
 tupels.sort(key=lambda i: i[0]+i[1])
 tupels
