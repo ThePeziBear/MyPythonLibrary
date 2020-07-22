@@ -40,7 +40,7 @@ re.findall("[0-9]+", sentence) # Finde alle Zahlen zwischen 0 & 9. Das + bedeute
 re.search("der?", "Hallo der Hallo") # Das ? definiert dass das r optional ist
 print(re.search("der*", "Hallo de Hallo")) # Das * definiert, dass das r optional ist.
 print(re.search("der*", "Hallo derrrrrrrr Hallo")) # Das * definiert, auch dass nach dem r beliebig viele andere r optional sind.
-WICHTIG: https://regexr.com/ - Cheatsheets bzw. Erklärungen von Suchabfragen
+WICHTIG: https://regexr.com/ & https://docs.python.org/3/library/re.html - Cheatsheets bzw. Erklärungen von Suchabfragen
 
 
 
