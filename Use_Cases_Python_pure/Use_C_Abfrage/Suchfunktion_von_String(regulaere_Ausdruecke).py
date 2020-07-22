@@ -12,4 +12,5 @@ print(re.search("der*", "Hallo de Hallo")) # Das * definiert, dass das r optiona
 print(re.search("der*", "Hallo der Hallo"))
 print(re.search("der*", "Hallo derrrrrrrr Hallo")) # Das * definiert, auch dass nach dem r beliebig viele andere r optional sind.
 
-#WICHTIG: https://regexr.com/ - Cheatsheets bzw. Erklärungen von Suchabfragen
+#WICHTIG: https://regexr.com/ & https://docs.python.org/3/library/re.html - Cheatsheets bzw. Erklärungen von Suchabfragen
+
