@@ -15,6 +15,7 @@ elif currency == "¥":
 else:
     print("Sonst")
 
+Bearbeiten von Listen
 liste1.strip() - Entefernen des Absatzzeichens \ln (UC_Teil-daten_extrahieren_ohne Visualisierung)
 liste1.split('Zeichen bei dem gesplilted gehört z.B ;') (UC_Teil-daten_extrahieren_ohne Visualisierung)
 liste1.split()[1] #Splitfunktion bezieht sich auf das 2. Element (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
@@ -27,6 +28,14 @@ liste1.sort() - Sortierung der Liste aufsteigend (08_Datenstrukturen_&_Datensort
 liste1.sort(reverse=True) - Sortierung der Liste absteigend (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
 liste1.sort(key=len) - Alternative schreibweise für die Sortierung nach Namenslänge (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
 liste1.sort(key=lambda i: i[1]) - Ausgabe von einem Dictionary eines Wertes (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
+
+variable Funktionsparameter übergeben
+def calculate_max(*params) - Funktion kann mit * variable Anzahl von Parametern entegennehmen für eine Liste (UseC_variable_Funktionsparameter_übergeben)
+def f(**args) - Funktion kann mit ** variable Anzahl von Parametern entegennehmen für ein Dictionary (UseC_variable_Funktionsparameter_übergeben)
+
+
+
+
 
 
 #######################Python Pandas:######################################################
