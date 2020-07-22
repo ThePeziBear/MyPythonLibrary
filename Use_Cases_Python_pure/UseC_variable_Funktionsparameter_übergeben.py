@@ -9,7 +9,7 @@ def calculate_max(*params):
             current_max = item
     return current_max
 
-calculate_max(1, 2, 3
+calculate_max(1, 2, 3)
 
 
 # Über die **-Schreibweise können mehrere, benannte Parameter entgegen genommen werden.
