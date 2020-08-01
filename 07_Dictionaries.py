@@ -86,3 +86,11 @@ print(q.get())
 print(q.get())
 print(q.get())
 print(q.get())
+
+
+#Verwendung Format() - Funktion
+
+planet = "Erde"
+durchschnitt = 12742
+
+" Der Durchschnitt der {} ist {} Kilometer.".format(planet,durchschnitt)
