@@ -45,7 +45,7 @@ WICHTIG: https://regexr.com/ & https://docs.python.org/3/library/re.html - Cheat
 Filterfunktion mit Lambda:
 seq = ["suppe","hund","salat","katze","toll"]
 list(filter(lambda wort: wort[0]=='s',seq)) # Alle Wörter die mit s beginnen
-
+asdf
 
 
 #######################Python Pandas:######################################################
