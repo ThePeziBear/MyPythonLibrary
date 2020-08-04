@@ -1,0 +1,21 @@
+#Du fährst ein klein wenig zu schnell und ein Polizist hält dich an. Schreibe eine Funktion, die eine der drei folgenden Reaktionen ergibt: "Kein Strafzettel", "Kleiner Strafzettel", "Großer Strafzettel".
+# Wenn deine Geschwindigkeit 100 oder weniger beträgt, dann erhältst du "Kein Strafzettel". Für eine Geschwindigkeit zwischen 100 und 120 (inklusive) gibt es "Kleiner Strafzettel".
+# Für Geschwindigkeiten über 120 gibt es "Großer Strafzettel". Außer es ist dein Geburtstag. Dann drückt der Polizist ein Auge zu und alle Grenzen liegen um 5 höher (Ob du Geburtstag hast ist in einem Boolean angegeben).
+
+
+def geschwindigkeitskontrolle(x ,y):
+
+    if y:
+        z = x - 5
+    else:
+        z = x
+
+    if z <= 100:
+        return ('Kein Strafzettel')
+    elif z <= 120:
+        return ('Kleiner Strafzettel')
+    elif z > 120:
+        return ('Großer Strafzettel')
+
+
+geschwindigkeitskontrolle(123,True)
