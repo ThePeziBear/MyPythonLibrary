@@ -122,3 +122,30 @@ df['Spaltenname'].median() - Berechnung Median einer Spalte
 max(axis='columns') - min(axis='columns') -  höchste Wert des Zeileneintrags über Dataframe (z.B. Zeile 1) minus niedrigster Wert des Zeileneintrags über Dataframe (z.B. Zeile 2)
 max(axis='index') - min(axis='index') - höchster Wert einer Spalte minus niedrigsten Wert einer Spalte
 df('Spaltenname1') > df('Spaltenname') --> Boolean - Mit outpout.astype(int) Ausgabe von 0 & 1  (UC_Vergleichsoperation_Pandas)
+
+
+
+#######################Python Numpy:######################################################
+
+import numpy as np
+
+liste = [1,2,3]
+matrix = [[1,2,3],[4,5,6]]
+
+np.arange(1,11,2) #erzeugen einer Array mit 2 Abständen
+np.zeros((5,5))#erzeugen einer Matritze mit 0
+np.ones((3,3)) #erzeugen einer Matritze mit 1
+
+np.linspace(0,10) #Ausgabe einer gleichmäßig verteilten Zahlenreihe, Default-Wert ist 50
+np.eye(5) # ausgabe einer Einheitsmatrix mit 5 Dimensionen
+
+np.random.rand(2) #Zufallszahlen die gleichverteilt sind zwischen 0 & 1
+np.random.randint(1,100,10) # Zufallszahl zwischen 1 & 100; 3. Wert gibt die Anzahl von Werten an.
+
+arr.reshape(5,5) #Erstellen einer Matritze von Variable arr; arr muss mit reshape übereinstimmen
+
+ranarr.max() #max Wert von array
+ranarr.argmax() # Ausgabe des Index vom höchsten Wert
+ranarr.min() # min Wert von der array
+ranarr.argmin() # Ausgabe des Index vom niedrigsten Wert
+arr.shape # Ausgabe der Eigenschaften des Arrays
