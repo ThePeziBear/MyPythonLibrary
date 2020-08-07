@@ -144,8 +144,23 @@ np.random.randint(1,100,10) # Zufallszahl zwischen 1 & 100; 3. Wert gibt die Anz
 
 arr.reshape(5,5) #Erstellen einer Matritze von Variable arr; arr muss mit reshape übereinstimmen
 
+c=np.arange(1,26).reshape(5,5) #erstellen einer Matrix (5x5)
+c[2:,1:] # Teilausgabe der Matrix ab der 3ten Zeile und 2te Spalte
+c[3][4] # Ausgabe eines Wertes von der 4 Zeile und 5 Spalte
+c.sum(axis=0) #Summe aller Werte in einer Spalte
+c.sum(axis=1) #Summe aller Werte in einer Zeile
+
+
 ranarr.max() #max Wert von array
 ranarr.argmax() # Ausgabe des Index vom höchsten Wert
 ranarr.min() # min Wert von der array
 ranarr.argmin() # Ausgabe des Index vom niedrigsten Wert
 arr.shape # Ausgabe der Eigenschaften des Arrays
+arr + arr # Addition von arrays
+arr * arr # Multiplikation von arrays
+arr- arr # subtrahieren von arrays
+arr/arr # division von arrays
+np.sqrt(arr) #Quadratwurzel ziehen
+np.exp(arr) # exoponentiale Operation
+np.sin(arr) #Sinus werte ausgeben
+np.log(arr) #logarithmus Werte ausgeben
