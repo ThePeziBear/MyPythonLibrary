@@ -80,6 +80,8 @@ df_new = df[['Spalte1', 'Spalte2', 'SpalteN']]  # Auswahl der benötigten Column
 Mehrfach filtern von DataFrame:
 df2 = df[df['Year'] < 1990] - 1. Ausgabe Filterung auf Personen unter 1990
 df3 = df2[df2['Gender'] =='Male] - 2 Ausgabe Filterung Male und Filter aus 1. Ausgabe --> Filter Personen < 1990 & Male
+df2 = df[df['Year']<'1990']['Male'] - komprimiertere Schreibweise und ersetzt Zeile 81 & 82
+
 -------------------------------------------------------------------------------------------------------------
 status1 = df['Status'] == 'Management' - Ausgabe Personen mit MGMT
 status2 = df['Status'] == 'Active' - Ausgabe Personen die noch Active sind
