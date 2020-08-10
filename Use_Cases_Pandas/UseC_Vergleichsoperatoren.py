@@ -66,3 +66,4 @@ Top15['HighRenewe'] = (Top15['% Renewable'] >= Top15['% Renewable'].median()).as
 # Daraus ergeben sich Booleans (True or False). Mit Funktion astype(int) werden sie in Zahlen umbenannt.
 
 Top15['HighRenewe'].sort_values(ascending=False)
+
