@@ -46,6 +46,11 @@ Filterfunktion mit Lambda:
 seq = ["suppe","hund","salat","katze","toll"]
 list(filter(lambda wort: wort[0]=='s',seq)) # Alle Wörter die mit s beginnen
 
+Konvertieren von 1) DateFrame auf Liste & 2) von Liste auf String
+liste = Dataframe.to_list() #Convert DF to list
+string = ''.join(str(i) for i in liste) #Convert list to string
+
+
 
 #######################Python Pandas:######################################################
 
