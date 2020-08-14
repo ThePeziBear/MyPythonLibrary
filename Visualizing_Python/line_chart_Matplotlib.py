@@ -15,3 +15,29 @@ plt.ylabel("Billions of $")
 #Darstellung des Plots
 
 plt.show()
+
+
+# Objektorientierte Erstellung eins Diagramms mit einer eingesestzten Grafik
+
+import numpy as np
+
+x = np.linspace(0,5,11)
+y = x**2
+
+af = plt.figure() #Diagramm erstellen (leere Arbeitsfläche)
+axes1 = af.add_axes([0.1,0.1,0.8,0.8]) # Positionierung der Grafik
+axes2 = af.add_axes([0.2,0.5,0.4,0.3]) # Positionierung der eingesetzten Grafik
+
+# Großes Diagramm
+axes1.plot(x,y,'b')
+axes1.set_xlabel('X') # Achsenbezeichnung x
+axes1.set_xlabel('Y') # Achsenbezeichnung Y
+axes1.set_title('big diagramm') #Diagramm - Titel
+
+# Eingesetztes Diagramm mit Achse 2
+axes2.plot(y, x, 'r')
+axes2.set_xlabel('X') # Achsenbezeichnung x
+axes2.set_xlabel('Y') # Achsenbezeichnung Y
+axes2.set_title('small diagramm') #Diagramm - Titel
+
+plt.show()
