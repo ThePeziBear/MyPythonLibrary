@@ -47,7 +47,7 @@ axes2.set_title('small diagramm') #Diagramm - Titel
 
 plt.show()
 
-#Erstellung von 2 oder mehreren Diagrammen in einem Output
+###Erstellung von 2 oder mehreren Diagrammen in einem Output
 
 diagramm, axes = plt.subplots(nrows = 1, ncols = 2) #diagramm ist variable & gibt das man ein Diagramm erstellen will;
 # über axes werden die Anzahl der Plots definiert.
@@ -73,7 +73,14 @@ ax= diag.add_axes([0,0,1,1])
 ax.plot(x,y)
 
 
-#Erstellen und Abspeichern einer Grafik als PNG-Datei
+###Erstellen und Abspeichern einer Grafik als PNG-Datei
 diag, axes=plt.subplots(figsize=(12,3),dpi=100) #DPI gibt die Auflösung und somit die Größe an.
 axes.plot(x,y)
 diag.savefig('dateiname.png', dpi=200) # Abspeichern einer Matplotlib Grafik
+
+### Legende erstellen bzw. Positionierung der Legende
+diag = plt.figure()
+ax=diag.add_axes([0,0,1,1])
+ax.plot(x,x**2, label = 'x**2')
+ax.plot(x,x**3, label = 'x**3')
+ax.legend(loc=5) # Über loc 1-10 wird die Position der Legende bestimmt
