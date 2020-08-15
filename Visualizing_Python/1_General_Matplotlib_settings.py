@@ -44,7 +44,6 @@ axes2.plot(y, x, 'r')
 axes2.set_xlabel('X') # Achsenbezeichnung x
 axes2.set_xlabel('Y') # Achsenbezeichnung Y
 axes2.set_title('small diagramm') #Diagramm - Titel
-
 plt.show()
 
 ###Erstellung von 2 oder mehreren Diagrammen in einem Output
@@ -84,3 +83,55 @@ ax=diag.add_axes([0,0,1,1])
 ax.plot(x,x**2, label = 'x**2')
 ax.plot(x,x**3, label = 'x**3')
 ax.legend(loc=5) # Über loc 1-10 wird die Position der Legende bestimmt
+
+### Grafik Formatierung (Farbe, Formen)
+
+#Übersicht über alle Einstellungsmöglichkeiten:
+
+diag, ax=plt.subplots()
+ax.plot(x, x**2, color='#F4A460'# RGB Hex Code für color definieren Syntax:#Code
+        ,alpha=0.9 # Transparenz Setting
+        ,lw=1.5 # Dicke der Linie
+        ,ls='--' # Art der Linie (gestrichelt, durchgehend)
+        ,marker='o'# Setzen von Punkte auf der Linie
+        ,markersize=10 #Größe der Marker
+        ,markerfacecolor='yellow'#Farbe des markes
+        ,markeredgewidth=3#Umrandungsdicke
+        ,markeredgecolor='green')#Umrandungsfarbe
+
+
+#Example für verschiedene Linienformatierungen
+diag, ax = plt.subplots(figsize=(12,6))
+
+ax.plot(x, x+1, color="red", linewidth=0.25)
+ax.plot(x, x+2, color="red", linewidth=0.50)
+ax.plot(x, x+3, color="red", linewidth=1.00)
+ax.plot(x, x+4, color="red", linewidth=2.00)
+
+# Mögliche Linienstile ‘-‘, ‘–’, ‘-.’, ‘:’, ‘steps’
+ax.plot(x, x+5, color="green", lw=3, linestyle='-')
+ax.plot(x, x+6, color="green", lw=3, ls='-.')
+ax.plot(x, x+7, color="green", lw=3, ls=':')
+
+# Benutzerdefinierte Querstrich
+line, = ax.plot(x, x+8, color="black", lw=1.50)
+line.set_dashes([5, 10, 15, 10]) # Format: Linienlänge, Abstandslänge, ...
+
+# Mögliche Markierungen: marker = '+', 'o', '*', 's', ',', '.', '1', '2', '3', '4', ...
+ax.plot(x, x+ 9, color="blue", lw=3, ls='-', marker='+')
+ax.plot(x, x+10, color="blue", lw=3, ls='--', marker='o')
+ax.plot(x, x+11, color="blue", lw=3, ls='-', marker='s')
+ax.plot(x, x+12, color="blue", lw=3, ls='--', marker='1')
+
+# Markierungsgröße und Farbe
+ax.plot(x, x+13, color="purple", lw=1, ls='-', marker='o', markersize=2)
+ax.plot(x, x+14, color="purple", lw=1, ls='-', marker='o', markersize=4)
+ax.plot(x, x+15, color="purple", lw=1, ls='-', marker='o', markersize=8, markerfacecolor="red")
+ax.plot(x, x+16, color="purple", lw=1, ls='-', marker='s', markersize=8,
+        markerfacecolor="yellow", markeredgewidth=3, markeredgecolor="green");
+
+plt.show()
+
+#http://www.matplotlib.org - Die Webseite von Matplotlib.
+#https://github.com/matplotlib/matplotlib - Der Sourcecode zu Matplotlib.
+#http://matplotlib.org/gallery.html - Eine große Galerie, die viele Arten von Diagrammen zeigt, die mit Matplotlib erstellbar sind.
