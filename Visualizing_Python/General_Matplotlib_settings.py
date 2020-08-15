@@ -20,3 +20,8 @@ plt.show()
 
 plt.scatter([1, 2, 4], [5, 6, 5], color = "#ff0000", marker = "x")
 plt.show()
+
+#Erstellen und Abspeichern einer Grafik als PNG-Datei
+diag, axes=plt.subplots(figsize=(12,3),dpi=100) #DPI gibt die Auflösung und somit die Größe an.
+axes.plot(x,y)
+diag.savefig('dateiname.png') # Abspeichern einer Matplotlib Grafik
