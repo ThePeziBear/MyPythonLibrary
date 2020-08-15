@@ -41,3 +41,28 @@ axes2.set_xlabel('Y') # Achsenbezeichnung Y
 axes2.set_title('small diagramm') #Diagramm - Titel
 
 plt.show()
+
+#Erstellung von 2 oder mehreren Diagrammen in einem Output
+
+diagramm, axes = plt.subplots(nrows = 1, ncols = 2) #diagramm ist variable & gibt das man ein Diagramm erstellen will;
+# über axes werden die Anzahl der Plots definiert.
+
+#Diagramm1
+axes[0].plot(x,y)
+axes[0].set_xlabel('X')
+axes[0].set_ylabel('Y')
+#Diagramm2
+axes[1].plot(y,x)
+axes[1].set_ylabel('Y')
+axes[1].set_xlabel('X')
+
+
+diagramm
+plt.tight_layout()
+plt.show()
+
+
+diag = plt.figure(figsize=(8,4),dpi=150) #DPI gibt die Auflösung und somit die Größe an.
+
+ax= diag.add_axes([0,0,1,1])
+ax.plot(x,y)
