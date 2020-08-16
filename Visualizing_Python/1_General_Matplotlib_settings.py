@@ -99,6 +99,9 @@ ax.plot(x, x**2, color='#F4A460'# RGB Hex Code für color definieren Syntax:#Cod
         ,markeredgewidth=3#Umrandungsdicke
         ,markeredgecolor='green')#Umrandungsfarbe
 
+ax.set_xlim([0,4.5]) # Auswahl des Darstellungsbereichs von der X-Achse
+ax.set_ylim([0,20]) #Auswahl des Darstellungsbereichs von der Y-Achse
+
 
 #Example für verschiedene Linienformatierungen
 diag, ax = plt.subplots(figsize=(12,6))
