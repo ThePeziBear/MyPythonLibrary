@@ -1,3 +1,5 @@
+#Distplot (Verteilungsfunktionen plotten), joinrplot, pairplot, kdeplot, Boxplot, Violinplot, Swarmplot, countplot, barplot
+
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
