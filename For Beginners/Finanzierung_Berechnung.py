@@ -46,3 +46,15 @@ payment_total = interest_total+repayment_total
 
 interest_debt_capital = (payment_total/value)-1
 
+#from tkinter import *
+#root = Tk()
+#theLabel= Label(root, text='Invest')
+#theLabel.pack()
+#root.mainloop()window = tkinter.Tk()
+# to rename the title of the window
+import tkinter
+window = tkinter.Tk()
+window.title("GUI")
+# pack is used to show the object in the window
+label = tkinter.Label(window, text = "Welcome to the Amazing Invest Calculator!").pack()
+window.mainloop()
