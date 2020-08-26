@@ -109,6 +109,8 @@ df.groupby('Spalte die gruppiert wird')['Spalte für Rechenoperation'].sum() - G
 df['Spaltenname']=df['Spaltenname'].apply(lambda x: 1 if x== 'Vergleichsvariable' else 0) (UC_Group_by_Berechnung_relativesVerhältnis_im_Dataframe_Pandas)
 df['Spaltenname'].astype(int) - Werte in eine Zahl umwandeln (Booleans auch möglich)
 df['Spaltenname'].str.split("/") - Werte Splitten von einer Spalte in einem Dataframe
+df['Spaltenname NEU']= df['Spaltenname'].apply(func (z.B. len oder auch selbstkreierte def)). https://thispointer.com/pandas-apply-apply-a-function-to-each-row-column-in-dataframe/
+
 
 Zusammenführen von DataFrames und Listen
 Merge-Funktion für DataFrame: (UC_Group_by_Maping_von_Daten_Pandas)
@@ -126,11 +128,14 @@ Erstellen von einem Dictionary: (UC_for_easy_intrepret_data_use_unique_func_to_m
 1. Step: key = [Liste] 2. Step: value = [liste] 3.Step: dict(zip(key,value))
 
 Berechnungen DataFrame:
-corr()
+df.corr()
 df['Spaltenname'].median() - Berechnung Median einer Spalte
 max(axis='columns') - min(axis='columns') -  höchste Wert des Zeileneintrags über Dataframe (z.B. Zeile 1) minus niedrigster Wert des Zeileneintrags über Dataframe (z.B. Zeile 2)
 max(axis='index') - min(axis='index') - höchster Wert einer Spalte minus niedrigsten Wert einer Spalte
 df('Spaltenname1') > df('Spaltenname') --> Boolean - Mit outpout.astype(int) Ausgabe von 0 & 1  (UC_Vergleichsoperation_Pandas)
+
+Statistische Kennzahlen:
+df.describe() # Ausgabe von Count, unique, top, frequency, mean, std, quantil etc.. Die Statistichen Kennzahlen können varieren. siehe: https://www.w3resource.com/pandas/dataframe/dataframe-describe.php
 
 
 
