@@ -1,5 +1,7 @@
 ## Import Libraries
 import nltk
+from sklearn.metrics import classification_report
+
 nltk.download_shell()
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -112,11 +114,42 @@ sparsity = (100.0 * BagOfWords_messages.nnz / (BagOfWords_messages.shape[0] * Ba
 
 from sklearn.feature_extraction.text import TfidfTransformer #Import tfidf Modell von Sklearn
 
-tfidf_trans = TfidfTransformer().fit(BagOfWords_messages) #Anwendung des Modells auf Daten
+tfidf_score_per_word = TfidfTransformer().fit(BagOfWords_messages) #Anwendung des Modells auf einzelne Werte --> tfidf Score pro Unique Wort
 
 #Plausi-Check
-tfidf4=tfidf_trans.transform(BagOfWords_test_4) #Anwendung des Modells auf SMS Message Nr4. als Plauscheck
-word_ranking_test=(tfidf_trans.idf_[BagOfWords_transformer.vocabulary_['university']])
+tfidf4=tfidf_score_per_word.transform(BagOfWords_test_4) #Anwendung des Modells auf SMS Message Nr4. als Plauscheck
+word_ranking_test=(tfidf_score_per_word.idf_[BagOfWords_transformer.vocabulary_['university']])
+
+#
+tfidf_score_per_message = tfidf_score_per_word.transform(BagOfWords_messages) # Anwendung des Modells auf einzelne Message --> tfidf Score für jedes Wort für jede Message
 
 
+## Modell trainieren
+#Mit den Vektoren, die unsere Nachrichtne repräsentieren, kann der spam/ham Klassifizierer trainiert werden.
+# Wir können tatsächlich fast jede Art an Klassifizierungs-Algorithmus verwenden. Aus verschiedenen Gründen ist der Naive Bayes Klassifzierer eine gute Wahl.
+#siehe weiterführenden Link: http://www.inf.ed.ac.uk/teaching/courses/inf2b/learnnotes/inf2b-learn-note07-2up.pdf
 
+from sklearn.naive_bayes import MultinomialNB
+spam_detect_model = MultinomialNB().fit(tfidf_score_per_message, messages['label'])
+
+#erste Prüfung
+spam_detect_test = spam_detect_model.predict(tfidf4)[0] #Es wird das detect_model auf die 3 Nachricht angewendet - Output ist ham
+spam_detect_test_compare=messages.label[3] # --> das Modell gibt die korrekte Klassifizierung wider.
+
+## Daten in train & test Daten splitten
+from sklearn.model_selection import train_test_split
+#Pseudo_code: train_test_split= X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.33, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(messages['message'],messages['label'],test_size=0.2, random_state=101)
+
+## Erstellung einer Daten Pipline - Speicherung von Transformationen für zukünftige Anwendungen.
+from sklearn.pipeline import Pipeline
+pipeline = Pipeline([
+    ('bow', CountVectorizer(analyzer=text_process)),  # strings to token integer counts
+    ('tfidf', TfidfTransformer()),  # integer counts to weighted TF-IDF scores
+    ('classifier', MultinomialNB()),  # train on TF-IDF vectors w/ Naive Bayes classifier
+])
+
+pipeline.fit(X_train,y_train) #Modell trainieren
+
+predictions = pipeline.predict(X_test) #Berechnung der Vorhersage
+print(classification_report(predictions,y_test))#Vergleich von der Vorhersage mit den Label Daten
