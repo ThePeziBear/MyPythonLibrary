@@ -153,3 +153,33 @@ pipeline.fit(X_train,y_train) #Modell trainieren
 
 predictions = pipeline.predict(X_test) #Berechnung der Vorhersage
 print(classification_report(predictions,y_test))#Vergleich von der Vorhersage mit den Label Daten
+
+#Classification Report
+
+#    precision recall f1 - score support
+#ham   1.00     0.96     0.98     1026
+#spam  0.66     1.00     0.79       89
+
+# Precision: Wie viel Prozent der Vorhersagen waren korrekt? Es gibt die Genauigkeit positiver Vorhersagen aus.
+# Berechnung ham: TP / (TP + FP) (True Positive= richtig klassifizierte Message als ham; False Positive= Message als Ham, obwohl sie ein Spam ist)
+# Berechnung spam: TP / (TP + FP) (True Positive= richtig klassifizierte Message als Spam; False Positive= Message als Spam, obwohl sie ein Ham ist)
+
+
+# Recall: Wie viel Prozent der korrekten Vorhersgen als korrekt identifiziert worden sind.
+# Berechnung ham TP/(TP+FN) (True Positive= richtig klassifizierte Message als ham, False Negative: Message als Spam klassifziert, obwohl die Message ein Ham ist.
+# Berechnung spam TP/(TP+FN) (True Positive= richtig klassifizierte Message als spam, False Negative: Message als ham klassifziert, obwohl die Message ein spam ist.
+
+# F1-Score: Wie viel Prozent der positiven Vorhersagen waren korrekt?
+# Der F1-Wert ist ein gewichteter aus Recall & Precision. Der beste Wert ist 1,0 und der schlechteste beträgt 0,0.
+# Im Allgemeinen sind F 1  -Werte niedriger als Genauigkeitsmaße, da sie die Precision und den Recall in ihre Berechnung einbetten.
+# Berechnung f1-Score: F1 Score = 2*(Recall * Precision) / (Recall + Precision)
+
+
+
+
+#     accuracy                           0.96      1115
+#    macro avg       0.83      0.98      0.89      1115
+# weighted avg       0.97      0.96      0.96      1115
+
+
+
