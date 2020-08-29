@@ -175,11 +175,3 @@ print(classification_report(predictions,y_test))#Vergleich von der Vorhersage mi
 # Berechnung f1-Score: F1 Score = 2*(Recall * Precision) / (Recall + Precision)
 
 
-
-
-#     accuracy                           0.96      1115
-#    macro avg       0.83      0.98      0.89      1115
-# weighted avg       0.97      0.96      0.96      1115
-
-
-
