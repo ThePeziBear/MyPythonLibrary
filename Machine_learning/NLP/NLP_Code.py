@@ -60,7 +60,8 @@ test_for_tokenize =messages['message'].head().apply(text_process)
 
 ##Vektorisierung
 
-#Aktuell liegen uns die Nachrichten als eine Listen von Tokens (auch als "Lemmas" bekannt) vor. Wir müssen jetzt jede dieser Nachrichten in einen Vektor umwandeln, mit dem SciKit Learn's Algorithmus arbeiten kann.
+#Aktuell liegen uns die Nachrichten als eine Listen von Tokens (auch als "Lemmas" bekannt) vor.
+# Wir müssen jetzt jede dieser Nachrichten in einen Vektor umwandeln, mit dem SciKit Learn's Algorithmus arbeiten kann.
 
 #Wir werden dazu die folgenden drei Schritte nach dem bag-of-words (bow) Modell durchführen:
 
