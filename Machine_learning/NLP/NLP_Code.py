@@ -1,4 +1,4 @@
-## Import Libraries
+## Import Libraries ##
 import nltk
 from sklearn.metrics import classification_report
 
@@ -7,27 +7,27 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-## Import Dataset
+## Import Dataset ##
 #Import Dataset
 
 messages = pd.read_csv('Smsspamcollection/Smsspamcollection', sep='\t',
                        names=['label', 'message'])  # import der Daten ind Pandas zur explorativen Datenanalyse
 
-## Datananalyse & Datamanipulation
+## Datananalyse & Datamanipulation ##
 
-#Datenanalyse 1
+##Datenanalyse 1
 messages.describe() #statistische Standard Kennzahlen abrufen
 messages.groupby('label').describe()
 
-#Datenmanipulation
+##Datenmanipulation
 messages['length'] = messages['message'].apply(len) #Hinzufügen der Länge der Textnachrichten
 
-#Datenanalyse 2
+##Datenanalyse 2
 messages['length'].plot(bins=20, kind='hist')
 messages.length.describe()
 messages.hist(column='length',by='label',bins=50, figsize=(12,4))
 
-#Datenmanipulation 2: Entfernung der Punktzeichen (nopunc) & Entfernung der Stopwords
+##Datenmanipulation 2: Entfernung der Punktzeichen (nopunc) & Entfernung der Stopwords
 import string
 mess= 'Sample message! Notice: i we -,-,-,-'
 nopunc=[char for char in mess if char not in string.punctuation] # Entfernung der Punktzeichen
@@ -39,6 +39,7 @@ from nltk.corpus import stopwords # Import der Library
 blacklist = stopwords.words('english') # Auswahl der englischen Stopwords
 clean_mess= [word for word in nopunc.split() if word.lower() not in blacklist] # lower(): ermöglicht Groß & Kleinschreibung zu berücksichtigen
 
+##Methode: clean Stopwords, clean Zeichensetzung, return cleaned Text
 #Erstellung einer Methode, die die Zeichensetzung, Stopwörter ersetzt und dann in eine Liste mit cleaned Text zurück gibt.
 def text_process(mess): #Erstellung einer Funktion mit den oberen Variablen,damit wir es auf das DF anwenden können.
     nopunc = [char for char in mess if char not in string.punctuation]
@@ -52,16 +53,15 @@ def text_process(mess): #Erstellung einer Funktion mit den oberen Variablen,dami
         #    3. Gebe eine Liste des gesäuberten Texts zurück
 
 
-## Überprüfung des 'cleaned text'
+# Überprüfung des 'cleaned text'
 # Jetzt sind die Nachrichten "tokenized".
 #Tokenization bezeichnet den Prozess der Kovertierung eines normalen Text Strings in eine Liste von Token (Wörter die wir tatsächlich verarbeiten wollen)
-
 test_for_tokenize =messages['message'].head().apply(text_process)
 
-##Vektorisierung
+##Vektorisierung##
 
 #Aktuell liegen uns die Nachrichten als eine Listen von Tokens (auch als "Lemmas" bekannt) vor.
-# Wir müssen jetzt jede dieser Nachrichten in einen Vektor umwandeln, mit dem SciKit Learn's Algorithmus arbeiten kann.
+# Wir müssen jetzt jede dieser Nachrichten in einen Vektor umwandeln, mit man SciKit Learn's Algorithmus arbeiten kann.
 
 #Wir werden dazu die folgenden drei Schritte nach dem bag-of-words (bow) Modell durchführen:
 
@@ -96,7 +96,7 @@ sparsity = (100.0 * BagOfWords_messages.nnz / (BagOfWords_messages.shape[0] * Ba
 
 
 
-## TF-IDF Modellierung:
+## TF-IDF Modellierung:##
 
 #Was ist TF-IDF?
 #TF-IDF steht für term frequency-inverse document frequency. Diese Gewichtung wird häufig in der Informationsgewinnung und im Text Mining eingsetzt. Es ist ein statistisches Maß, das dazu dient auszuwerten, wie wichtig ein Wort in einem Dokument in einem Corpus ist. Die Wichtigkeit steigt proportional zur Anzahl der Erscheinungen des Worts im Dokument doch wird ausgeglichen durch die Häufigkeit des Worts im gesamten Corpus. Varianten der tf-idf Gewichtung werden häufig als wichtiges Tool von Suchmachinen verwendet, um die Wichtigkeit eines Dokuments für eine Nutzerabfrage zu beurteilen.
@@ -155,7 +155,7 @@ pipeline.fit(X_train,y_train) #Modell trainieren
 predictions = pipeline.predict(X_test) #Berechnung der Vorhersage
 print(classification_report(predictions,y_test))#Vergleich von der Vorhersage mit den Label Daten
 
-#Classification Report
+##Classification Report
 
 #    precision recall f1 - score support
 #ham   1.00     0.96     0.98     1026
@@ -174,5 +174,3 @@ print(classification_report(predictions,y_test))#Vergleich von der Vorhersage mi
 # Der F1-Wert ist ein gewichteter aus Recall & Precision. Der beste Wert ist 1,0 und der schlechteste beträgt 0,0.
 # Im Allgemeinen sind F 1  -Werte niedriger als Genauigkeitsmaße, da sie die Precision und den Recall in ihre Berechnung einbetten.
 # Berechnung f1-Score: F1 Score = 2*(Recall * Precision) / (Recall + Precision)
-
-
