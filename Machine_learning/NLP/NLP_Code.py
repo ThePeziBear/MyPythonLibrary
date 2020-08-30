@@ -13,6 +13,10 @@ import seaborn as sns
 messages = pd.read_csv('Smsspamcollection/Smsspamcollection', sep='\t',
                        names=['label', 'message'])  # import der Daten ind Pandas zur explorativen Datenanalyse
 
+
+
+
+
 ## Datananalyse & Datamanipulation ##
 
 ##Datenanalyse 1
@@ -58,6 +62,10 @@ def text_process(mess): #Erstellung einer Funktion mit den oberen Variablen,dami
 #Tokenization bezeichnet den Prozess der Kovertierung eines normalen Text Strings in eine Liste von Token (Wörter die wir tatsächlich verarbeiten wollen)
 test_for_tokenize =messages['message'].head().apply(text_process)
 
+
+
+
+
 ##Vektorisierung##
 
 #Aktuell liegen uns die Nachrichten als eine Listen von Tokens (auch als "Lemmas" bekannt) vor.
@@ -96,6 +104,8 @@ sparsity = (100.0 * BagOfWords_messages.nnz / (BagOfWords_messages.shape[0] * Ba
 
 
 
+
+
 ## TF-IDF Modellierung:##
 
 #Was ist TF-IDF?
@@ -129,6 +139,7 @@ tfidf_score_per_message = tfidf_score_per_word.transform(BagOfWords_messages) # 
 #Mit den Vektoren, die unsere Nachrichtne repräsentieren, kann der spam/ham Klassifizierer trainiert werden.
 # Wir können tatsächlich fast jede Art an Klassifizierungs-Algorithmus verwenden. Aus verschiedenen Gründen ist der Naive Bayes Klassifzierer eine gute Wahl.
 #siehe weiterführenden Link: http://www.inf.ed.ac.uk/teaching/courses/inf2b/learnnotes/inf2b-learn-note07-2up.pdf
+# toller Link für verschiedene Algorithmen-Modelle: https://dbs.cs.uni-duesseldorf.de/lehre/bmarbeit/barbeiten/ba_bekcic.pdf
 
 from sklearn.naive_bayes import MultinomialNB
 spam_detect_model = MultinomialNB().fit(tfidf_score_per_message, messages['label'])
@@ -155,7 +166,12 @@ pipeline.fit(X_train,y_train) #Modell trainieren
 predictions = pipeline.predict(X_test) #Berechnung der Vorhersage
 print(classification_report(predictions,y_test))#Vergleich von der Vorhersage mit den Label Daten
 
-##Classification Report
+
+
+
+
+
+##Classification Report##
 
 #    precision recall f1 - score support
 #ham   1.00     0.96     0.98     1026
