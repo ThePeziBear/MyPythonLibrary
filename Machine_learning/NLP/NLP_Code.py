@@ -156,7 +156,7 @@ X_train, X_test, y_train, y_test = train_test_split(messages['message'],messages
 ## Erstellung einer Daten Pipline - Speicherung von Transformationen für zukünftige Anwendungen.
 from sklearn.pipeline import Pipeline
 pipeline = Pipeline([
-    ('bow', CountVectorizer(analyzer=text_process)),  # strings to token integer counts
+    ('bow', CountVectorizer(analyzer=text_process)),  # strings werden in token umgewandelt und als integer count darzustellen
     ('tfidf', TfidfTransformer()),  # integer counts to weighted TF-IDF scores
     ('classifier', MultinomialNB()),  # train on TF-IDF vectors w/ Naive Bayes classifier
 ])
