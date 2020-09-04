@@ -48,3 +48,10 @@ class Random_Game():
 
 a = Random_Game()
 a.play_rounds()
+
+
+from tkinter import *
+root = Tk()
+theLabel= Label(root, text='Invest')
+theLabel.pack()
+root.mainloop()

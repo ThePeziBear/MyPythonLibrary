@@ -10,10 +10,10 @@ import seaborn as sns
 ## Import Dataset ##
 #Import Dataset
 
-messages = pd.read_csv('Smsspamcollection', sep='\t',
-                       names=['label', 'message'])  # import der Daten ind Pandas zur explorativen Datenanalyse
+#messages = pd.read_csv('Smsspamcollection', sep='\t',
+#                        names=['label', 'message'])  # import der Daten ind Pandas zur explorativen Datenanalyse
 
-messages_1 = pd.read_csv('yelp.csv',names=['text','stars'])
+messages1 = pd.read_csv('yelp.csv')
 
 
 
@@ -22,16 +22,16 @@ messages_1 = pd.read_csv('yelp.csv',names=['text','stars'])
 ## Datananalyse & Datamanipulation ##
 
 ##Datenanalyse 1
-messages.describe() #statistische Standard Kennzahlen abrufen
-messages.groupby('label').describe()
+#messages1.describe() #statistische Standard Kennzahlen abrufen
+#messages1.groupby('stars').describe()
 
 ##Datenmanipulation
-messages['length'] = messages['message'].apply(len) #Hinzufügen der Länge der Textnachrichten
+messages1['length'] = messages1['text'].apply(len) #Hinzufügen der Länge der Textnachrichten
 
 ##Datenanalyse 2
-messages['length'].plot(bins=20, kind='hist')
-messages.length.describe()
-messages.hist(column='length',by='label',bins=50, figsize=(12,4))
+#messages1['length'].plot(bins=20, kind='hist')
+#messages1.length.describe()
+#messages1.hist(column='length', by='stars', bins=50, figsize=(12, 4))
 
 ##Datenmanipulation 2: Entfernung der Punktzeichen (nopunc) & Entfernung der Stopwords
 import string
@@ -43,14 +43,14 @@ nopunc = ''.join(nopunc)
 #die jedoch nicht wesentlich für den Informationsgehalt des Textes ist.
 from nltk.corpus import stopwords # Import der Library
 blacklist = stopwords.words('english') # Auswahl der englischen Stopwords
-clean_mess= [word for word in nopunc.split() if word.lower() not in blacklist] # lower(): ermöglicht Groß & Kleinschreibung zu berücksichtigen
+clean_mess= [word for word in nopunc.split() if word.lower() not in stopwords.words('english')] # lower(): ermöglicht Groß & Kleinschreibung zu berücksichtigen
 
 ##Methode: clean Stopwords, clean Zeichensetzung, return cleaned Text
 #Erstellung einer Methode, die die Zeichensetzung, Stopwörter ersetzt und dann in eine Liste mit cleaned Text zurück gibt.
 def text_process(mess): #Erstellung einer Funktion mit den oberen Variablen,damit wir es auf das DF anwenden können.
     nopunc = [char for char in mess if char not in string.punctuation] #Entfernen aller Satzzeichen
     nopunc = ''.join(nopunc)
-    return [word for word in nopunc.split() if word.lower() not in blacklist]
+    return [word for word in nopunc.split() if word.lower() not in stopwords.words('english')]
 
         # Folgendes macht die text_process Funktion
         #Nimmt einen String von Text und führt das folgende durch:
@@ -62,7 +62,7 @@ def text_process(mess): #Erstellung einer Funktion mit den oberen Variablen,dami
 # Überprüfung des 'cleaned text'
 # Jetzt sind die Nachrichten "tokenized".
 #Tokenization bezeichnet den Prozess der Kovertierung eines normalen Text Strings in eine Liste von Token (Wörter die wir tatsächlich verarbeiten wollen)
-test_for_tokenize =messages['message'].head().apply(text_process)
+test_for_tokenize =messages1['text'].head().apply(text_process)
 
 
 
@@ -86,19 +86,19 @@ test_for_tokenize =messages['message'].head().apply(text_process)
 
 from sklearn.feature_extraction.text import CountVectorizer
 
-BagOfWords_transformer = CountVectorizer(analyzer=text_process).fit(messages['message']) # Es wird die Methode text_process zum cleanen des Datasets genommen
+BagOfWords_transformer = CountVectorizer(analyzer=text_process).fit(messages1['text']) # Es wird die Methode text_process zum cleanen des Datasets genommen
 number_words= len(BagOfWords_transformer.vocabulary_) #wichtig ist das _ bei vocabulary_ damit das ganze Wörterverzeichnis genommen wird
 
 ##Plausicheck für transformer & Überprüfung Sparsity
 
-message_test_4= messages['message'][3]
+message_test_4= messages1['text'][3]
 
 BagOfWords_test_4=BagOfWords_transformer.transform([message_test_4])
 print(BagOfWords_test_4)
 print(BagOfWords_transformer.get_feature_names()[4068])
     # Es zeigt dass die Nummer 4068 das "U" ist und 2 Mal vorkommt - check plausibel
 
-BagOfWords_messages = BagOfWords_transformer.transform(messages['message'])
+BagOfWords_messages = BagOfWords_transformer.transform(messages1['text'])
 
 sparsity = (100.0 * BagOfWords_messages.nnz / (BagOfWords_messages.shape[0] * BagOfWords_messages.shape[1]))
     #Gleichung: NNZ(Number of NON Zerovalues) / shape[0] (Anzahl Messages) * shape[1] Anzahl Unique Wörter
@@ -144,16 +144,16 @@ tfidf_score_per_message = tfidf_score_per_word.transform(BagOfWords_messages) # 
 # toller Link für verschiedene Algorithmen-Modelle: https://dbs.cs.uni-duesseldorf.de/lehre/bmarbeit/barbeiten/ba_bekcic.pdf
 
 from sklearn.naive_bayes import MultinomialNB
-spam_detect_model = MultinomialNB().fit(tfidf_score_per_message, messages['label'])
+spam_detect_model = MultinomialNB().fit(tfidf_score_per_message, messages1['stars'])
 
 #erste Prüfung
 spam_detect_test = spam_detect_model.predict(tfidf4)[0] #Es wird das detect_model auf die 3 Nachricht angewendet - Output ist ham
-spam_detect_test_compare=messages.label[3] # --> das Modell gibt die korrekte Klassifizierung wider.
+spam_detect_test_compare=messages1.label[3] # --> das Modell gibt die korrekte Klassifizierung wider.
 
 ## Daten in train & test Daten splitten
 from sklearn.model_selection import train_test_split
 #Pseudo_code: train_test_split= X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.33, random_state=42)
-X_train, X_test, y_train, y_test = train_test_split(messages['message'],messages['label'],test_size=0.2, random_state=101)
+X_train, X_test, y_train, y_test = train_test_split(messages1['text'], messages1['stars'], test_size=0.2, random_state=101)
 
 ## Erstellung einer Daten Pipline - Speicherung von Transformationen für zukünftige Anwendungen.
 from sklearn.pipeline import Pipeline

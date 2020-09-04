@@ -10,7 +10,7 @@ import seaborn as sns
 ## Import Dataset ##
 #Import Dataset
 
-messages = pd.read_csv('Smsspamcollection/Smsspamcollection', sep='\t',
+messages = pd.read_csv('Smsspamcollection', sep='\t',
                        names=['label', 'message'])  # import der Daten ind Pandas zur explorativen Datenanalyse
 
 
@@ -46,7 +46,7 @@ clean_mess= [word for word in nopunc.split() if word.lower() not in blacklist] #
 ##Methode: clean Stopwords, clean Zeichensetzung, return cleaned Text
 #Erstellung einer Methode, die die Zeichensetzung, Stopwörter ersetzt und dann in eine Liste mit cleaned Text zurück gibt.
 def text_process(mess): #Erstellung einer Funktion mit den oberen Variablen,damit wir es auf das DF anwenden können.
-    nopunc = [char for char in mess if char not in string.punctuation]
+    nopunc = [char for char in mess if char not in string.punctuation] #Entfernen aller Satzzeichen
     nopunc = ''.join(nopunc)
     return [word for word in nopunc.split() if word.lower() not in blacklist]
 
