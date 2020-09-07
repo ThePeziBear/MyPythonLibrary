@@ -192,3 +192,4 @@ print(classification_report(predictions,y_test))#Vergleich von der Vorhersage mi
 # Der F1-Wert ist ein gewichteter aus Recall & Precision. Der beste Wert ist 1,0 und der schlechteste beträgt 0,0.
 # Im Allgemeinen sind F 1  -Werte niedriger als Genauigkeitsmaße, da sie die Precision und den Recall in ihre Berechnung einbetten.
 # Berechnung f1-Score: F1 Score = 2*(Recall * Precision) / (Recall + Precision)
+
