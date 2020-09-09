@@ -78,7 +78,9 @@ print('MAE:', metrics.mean_absolute_error(y_test, predictions))
 print('MSE:', metrics.mean_squared_error(y_test, predictions))
 print('RMSE:', np.sqrt(metrics.mean_squared_error(y_test, predictions)))
 
-#r2: Das R-Quadrat ist ein Maß für die Anpassungsgüte für lineare Regressionsmodelle . Diese Statistik gibt den Prozentsatz der Varianz in der abhängigen Variablen an,
-# den die unabhängigen Variablen gemeinsam erklären. Das R-Quadrat misst die Stärke der Beziehung zwischen dem Modell und der abhängigen Variablen auf einer geeigneten Skala von 0 bis 100%.
+#r2: Das R² gibt an, wie gut die unabhängige(n) Variable(n) geeignet sind, die Varianz der abhängigen zu erklären.
+# Die Varianz ist ein Streuungsmaß, welches die Verteilung von Werten um den Mittelwert kennzeichnet. Sie ist das Quadrat der Standardabweichung.
+# Berechnet wird die Varianz, indem die Summe der quadrierten Abweichungen aller Messwerte vom arithmetischen Mittel durch die Anzahl der Messwerte dividiert wird.
+# Das R² liegt immer zwischen 0% (unbrauchbares Modell) und 100% (perfekte Modellanpassung). Zu beachten ist, dass das R² ein Gütemaß zum Beschreiben eines linearen Zusammenhangs darstellt.
 from sklearn.metrics import r2_score
 print('r2:',  r2_score(y_test, results))
