@@ -105,7 +105,7 @@ df['Spaltenname mit Änderung der Z-Einträge'].replace('...', np.NaN) - Ersetze
 df['Spaltenname mit Änderung der Z-Einträge'].str.replace('\(.*\)', ' ')  - Ersetzen einer Klammer mit String-Inhalt (UC_Correlation_Python_Pandas)
 df['Spaltenname mit Änderung der Z-Einträge'].str.replace('([0-9]+)$', ' ')  - Ersetzen einer Klammer mit String-Inhalt (UC_Correlation_Python_Pandas)
 df['Spaltenname'] = df['Spaltenname'].replace({'Key1': 'Value1','Key2': 'Value2'}) - Ersetzen von einem bestimmten Zeileneintrag durch einen anderen Zeileneintrag (UC_Correlation_Python_Pandas)
-df.drop('zu löschende Spalte', axis = 1) - Spalte in Dataframe wird gelöscht
+df.drop('zu löschende Spalte', axis = 1, inplace =True) - Spalte in Dataframe wird gelöscht
 df.groupby('Spalte die gruppiert wird')['Spalte für Rechenoperation'].sum() - Gruppieren von Spalte und anschließend Rechenoperation (UC_Group_by_Berechnung_relativesVerhältnis)
 df['Spaltenname']=df['Spaltenname'].apply(lambda x: 1 if x== 'Vergleichsvariable' else 0) (UC_Group_by_Berechnung_relativesVerhältnis_im_Dataframe_Pandas)
 df['Spaltenname'].astype(int) - Werte in eine Zahl umwandeln (Booleans auch möglich)
