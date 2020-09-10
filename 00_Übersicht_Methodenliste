@@ -82,6 +82,7 @@ df['Name der Spalte'] < int(1990) - Ausgabe Booleans ob Vergleich stimmt
 df[df['Name der Spalte'] < int(1990)] - Ausgabe des  Dataframes bei Boolean True
 df_new = df[['Spalte1', 'Spalte2', 'SpalteN']]  # Auswahl der benötigten Columns für Dataframe
 df[df['Name der Spalte'] == 'Gesuchter Eintrag z.B. Name eines Mitarbeiters']['Spaltenname auf die gifiltert wird z.B. Jahresgehalt'] # Vergleichsoperation
+df.isnull() - Ausgabe von allen Werten die keinen Eintrag (NaN) haben. Dabei ist der Boolean True der fehlende Wert
 
 Mehrfach filtern von DataFrame:
 df2 = df[df['Year'] < 1990] - 1. Ausgabe Filterung auf Personen unter 1990
