@@ -70,6 +70,6 @@ df2.drop('Cabin',axis=1,inplace=True)
 df2.dropna(inplace=True)
 
 #Visualisierung des DF
-sns.heatmap(df2),yticklabels=False,cbar=False,cmap='viridis')
+sns.heatmap(df2.isnull(),yticklabels=False,cbar=False,cmap='viridis')
 
 
