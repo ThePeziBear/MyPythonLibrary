@@ -72,4 +72,19 @@ df2.dropna(inplace=True)
 #Visualisierung des DF
 sns.heatmap(df2.isnull(),yticklabels=False,cbar=False,cmap='viridis')
 
+## Kategorische Daten Umwandeln für die Regression
+
+# pd.get_dummies übergibt anstelle Male & Female Booleans von 0 & 1.
+# mit drop_first wird eine Spalte gelöscht, das wir so die Unterscheidung von 0 & 1 in einer Spalte abbilden können.
+sex = pd.get_dummies(df2['Sex'],drop_first=True)
+embark = pd.get_dummies(df2['Embarked'],drop_first=True)
+
+# Es wird Name & Ticket gelöscht, da diese nicht relevant sind.
+# Die Kategorischen SpaltenSex & Embarked wird ebenfalls gelöscht und mit concat werden die neuen numerischen Spalten übergeben
+df2.drop(['Sex','Embarked','Name','Ticket'],axis=1,inplace=True)
+df2 = pd.concat([df2,sex,embark],axis=1)
+
+# Modellerstellung
+
+
 
