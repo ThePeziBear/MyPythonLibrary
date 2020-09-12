@@ -84,7 +84,33 @@ embark = pd.get_dummies(df2['Embarked'],drop_first=True)
 df2.drop(['Sex','Embarked','Name','Ticket'],axis=1,inplace=True)
 df2 = pd.concat([df2,sex,embark],axis=1)
 
-# Modellerstellung
+## Modellerstellung
+
+# Datenset in Train Test Split umwandeln
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(df2.drop('Survived',axis=1), df2['Survived'], test_size=0.3, random_state=101)
+
+#Training und Vorhersage
+from sklearn.linear_model import LogisticRegression
+log_model= LogisticRegression()
+
+#Training Modell
+log_model.fit(X_train, y_train)
+
+# Prognose
+predictions = log_model.predict(X_test)
+
+
+#Auswertung
+from sklearn.metrics import classification_report
+print(classification_report(y_test,predictions))
+
+from sklearn.metrics import confusion_matrix
+print(confusion_matrix(y_test,predictions))
+
+
+
 
 
 
