@@ -30,7 +30,7 @@ from os.path import dirname, exists, expanduser, isdir, join, splitext
 import hashlib
 
 def load_breast_cancer(return_X_y=False):
-    module_path = dirname("../../")
+    module_path = dirname("../../../")
     data, target, target_names = load_data(module_path, 'breast_cancer.csv')
     csv_filename = join(module_path, 'data', 'breast_cancer.csv')
 
