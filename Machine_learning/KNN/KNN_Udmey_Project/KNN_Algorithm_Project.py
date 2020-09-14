@@ -22,5 +22,24 @@ df_feat = pd.DataFrame(scaled_features,columns=('WTT','PTI','EQW','SBI','LQE','Q
 
 ## Train test Split
 
+from sklearn.model_selection import train_test_split
+X=scaled_features
+y=df['TARGET CLASS']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
 
 
+## KNN Modellierung
+
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=1,algorithm='auto',metric='euclidean') # Auswahl der Paramater für das Modell: Anzahl Nearst neighbor, Algorithmus(auto,kd_tree etc) Metric(euclidean distance, manhattan etc)
+
+knn.fit(X_train,y_train) #Anwendung des Modells auf Trainingsdaten
+
+#Prognose und Auswertung nach Kennzahlen
+
+prediction =knn.predict(X_test)
+
+from sklearn.metrics import classification_report, confusion_matrix
+print(confusion_matrix(y_test,prediction))
+
+print(classification_report(y_test,prediction))
