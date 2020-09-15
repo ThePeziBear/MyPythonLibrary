@@ -63,7 +63,7 @@ k_values = get_best_k(X_train,y_train,X_test,y_test)
 plt.figure(figsize=(12,8))
 plt.plot(k_values,marker='o')
 
-# Einsetzen des K-Values bei 21
+## Einsetzen des K-Values bei 21
 knn = KNeighborsClassifier(n_neighbors=21)
 knn.fit(X_train,y_train)
 pred = knn.predict(X_test)
