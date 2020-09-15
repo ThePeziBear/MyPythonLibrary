@@ -44,3 +44,32 @@ print(confusion_matrix(y_test,prediction))
 
 print(classification_report(y_test,prediction))
 
+## Den richtigen K-Wert finden
+# Mit der Elbow-Methode kann man den optimalen K-Wert finden
+
+def get_best_k(X_train,y_train,X_test,y_test):
+    errorrate=[]
+    for i in range(1,40):
+        knn=KNeighborsClassifier(n_neighbors=i)
+        knn.fit(X_train,y_train)
+        pred=knn.predict(X_test)
+        errorrate.append(np.mean(pred!=y_test))
+    return errorrate
+
+get_best_k(X_train,y_train,X_test,y_test)
+
+k_values = get_best_k(X_train,y_train,X_test,y_test)
+
+plt.figure(figsize=(12,8))
+plt.plot(k_values,marker='o')
+
+# Einsetzen des K-Values bei 21
+knn = KNeighborsClassifier(n_neighbors=21)
+knn.fit(X_train,y_train)
+pred = knn.predict(X_test)
+
+print('Mit K=21')
+print('\n')
+print(confusion_matrix(y_test,pred))
+print('\n')
+print(classification_report(y_test,pred))
