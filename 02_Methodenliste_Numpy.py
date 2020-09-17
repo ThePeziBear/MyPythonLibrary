@@ -41,6 +41,10 @@ print(np.array([1, 2, 3, 4, 5, 10]).max())
 # Standardabweichung
 print(np.array([1, 2, 3, 4, 5, 10]).std())
 
+#Modalwert - Dafür wird folgendes Paket benötigt - from scipy import stats
+from scipy import stats
+stats.mode(np.array([1, 2, 3, 4, 4, 5, 10]))
+
 
 ## Ein Array mit einem anderen Array filtern
 
