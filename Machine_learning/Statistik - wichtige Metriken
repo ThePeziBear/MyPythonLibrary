@@ -1,6 +1,8 @@
 --Standardabweichung--
 Die Standardabweichung ist ein Maß für die Streubreite der Werte eines Merkmals rund um dessen Mittelwert (arithmetisches Mittel).
 Vereinfacht gesagt, ist die Standardabweichung die durchschnittliche Entfernung aller gemessenen Ausprägungen eines Merkmals vom Durchschnitt.
+Die Standardabweichung wird oft verwendet, um statisitsche Außreißer zu ermitteln, Datenpunkte, die weiter als eine Standardabweichung vom Mittelwert entfernt sind,
+können als ungewöhnlich angesehen werden. Man Kann also sagen: Je mehr Sigmas „σ“ ein Datenpunkt vom Mittelwert entfernt ist, desto extermer ist er.
 Beispiel:
 Gefragt wurden 1.000 Personen, wie hoch ihre monatliche Handyrechnung ist. Der Mittelwert liegt bei 40 Euro und die Standardabweichung bei 27.
 Das heißt, dass die durchschnittliche Entfernung aller Antworten zum Mittelwert 27 Euro beträgt.
@@ -16,6 +18,13 @@ Gefragt wurden 1.000 Personen, wie viel Geld sie im Schnitt ausgeben, wenn sie m
 Der Mittelwert liegt bei 4,50 Euro, die Standardabweichung bei s = 0,60. Das heißt, dass die durchschnittliche Entfernung aller Antworten zum Mittelwert 0,60 Euro beträgt.
 Das Merkmal weist eine glockenartige Verteilung auf – es ist normalverteilt. Aufgrund der beschriebenen Faustformel lässt sich ableiten, dass rund 68 Prozent aller Befragten der Stichprobe mittags zwischen 3,90 Euro und 5,10 Euro ausgeben (4,50 +/- 0,60 Euro).
 Rund 95 Prozent geben zwischen 3,30 Euro und 5,70 Euro aus (4,50 +/- 2 mal 0,60 Euro).
+
+-- Varianz --
+Die Varianz ist ein Maß der Streuung der Daten um ihren Mittelpunkt. Die Varianz ist gleich dem Quadrat der Standardabweichung.
+Je größer die Varianz, desto größer ist die Streubreite der Daten.  Da die Varianz (σ2) einen quadrierten Betrag darstellt, sind ihre Einheiten ebenfalls quadriert, was ihre praktische Verwendung möglicherweise erschwert.
+Die Standardabweichung lässt sich in der Regel einfacher interpretieren, da sie in den gleichen Einheiten wie die Daten vorliegt. Angenommen, eine Stichprobe von Wartezeiten an einer Bushaltestelle weist einen Mittelwert von 15 Minuten und eine Varianz von 9 min2 auf.
+ Da die Varianz nicht in der gleichen Einheit wie die Daten angegeben wird, wird sie oft mit ihrer Quadratwurzel angezeigt, der Standardabweichung. Eine Varianz von 9 Minuten2 entspricht einer Standardabweichung von 3 Minuten.
+
 
 --Mean Absolute Error (MAE)--
 Ist der Durchschnitt des absoluten Werts der Fehler. MAE ist am leichtesten zu verstehen, da sie den durchschnittlichen Error angibt
