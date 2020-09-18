@@ -1,3 +1,5 @@
+#### Stochastische Kennzahlen ####
+
 --Standardabweichung--
 Die Standardabweichung ist ein Maß für die Streubreite der Werte eines Merkmals rund um dessen Mittelwert (arithmetisches Mittel).
 Vereinfacht gesagt, ist die Standardabweichung die durchschnittliche Entfernung aller gemessenen Ausprägungen eines Merkmals vom Durchschnitt.
@@ -25,6 +27,19 @@ Je größer die Varianz, desto größer ist die Streubreite der Daten.  Da die V
 Die Standardabweichung lässt sich in der Regel einfacher interpretieren, da sie in den gleichen Einheiten wie die Daten vorliegt. Angenommen, eine Stichprobe von Wartezeiten an einer Bushaltestelle weist einen Mittelwert von 15 Minuten und eine Varianz von 9 min2 auf.
  Da die Varianz nicht in der gleichen Einheit wie die Daten angegeben wird, wird sie oft mit ihrer Quadratwurzel angezeigt, der Standardabweichung. Eine Varianz von 9 Minuten2 entspricht einer Standardabweichung von 3 Minuten.
 
+-- 4 Momente für das Erkennen einer Verteilung --
++ Erwartungswert, der die „Mitte“ der Verteilung angibt, den Wert, den die Zufallsvariable durchschnittlich also annimmt
++ Varianz als Maß für die Streuung, ist die mittlere quadratische Abweichung der Realisationen vom Erwartungswert
++ Schiefe, die angibt, wie weit die Verteilung von einer symmetrischen Verteilung abweicht
++ Wölbung, ein Maß für die Spitzheit oder Flachheit einer Verteilung beziehungsweise ein Maß für die Abweichung von der Normalverteilung
+
+Momente sind Maßzahlen, die in der Mathematik für die Beschreibung einer Punktemenge verwendet werden.
+Hierdurch kannst Du die Verteilung einer Zufallsvariablen beschreiben.
+
+
+
+
+#### Numerische Kennzahlen ####
 
 --Mean Absolute Error (MAE)--
 Ist der Durchschnitt des absoluten Werts der Fehler. MAE ist am leichtesten zu verstehen, da sie den durchschnittlichen Error angibt
@@ -46,3 +61,9 @@ Der RMSE sagt aus wie gut eine Funktion(skurve) an die Daten angepasst ist. Er s
 Der RMSE ist immer im Zusammenhang mit den Daten selbst zu betrachten.
 WICHTIG: Vergleiche niemals Apfel mit Orangen, dh vergleiche niemals verschiedene Metriken miteinander.
 Vergleiche beispielsweise keine MSE-Werte mit MAE oder anderen. Sie sind anders.
+
+
+-- 4 Momente für das Erkennen einer Verteilung --
+
+Momente sind Maßzahlen, die in der Mathematik für die Beschreibung einer Punktemenge verwendet werden.
+Hierdurch kannst Du die Verteilung einer Zufallsvariablen beschreiben.
