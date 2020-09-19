@@ -38,11 +38,6 @@ Je höher die Ordnung der Funktion, desto komplexere Kurven können gebaut werde
 Es gibt jedoch ein Problem bei einem möglichen Overfitting. Daher verwende nur so viele Ordnungen wie möglich.
 Eine gute Überprüfung ist das anzeigen einer Kurve - Wenn sich die Kurve der Ausreißer anpasst, dann ist die Overfitted.
 
-
-
-
-
-
 Kennzahlen:
 
 Mit Hilfe des R2 können wir messen wie gut die Linie unsere Daten beschreiben. Es wird die Variablität durch das gefundene Modell beschrieben (Wie weit sind die Punkte von der Linie entfernt)
