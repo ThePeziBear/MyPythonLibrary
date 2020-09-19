@@ -1,0 +1,53 @@
+-- Lineares Regressionsmodell--
+
+Modell Beschreibung:
+Zur Berechnung des Modells wird die Methode der kleinsten Quadrate.Die Abweichung also sprich der Fehler im Quadrat wird minimiert.
+Wenn eine Wolke aus Datenpunkten gegeben ist, soll eine möglichst genau passende, parameterabhängige Modellkurve gelegt werden.
+Dazu bestimmt man die Parameter dieser Kurve numerisch, indem die Summe der quadratischen Abweichungen der Kurve von den beobachteten Punkten minimiert wird.
+
+In der Grafik sind die (t; y)(t;y)-Paare als Datenpunkte zu erkennen. Es wurde hier eine logistische Funktion in die Punktwolke gelegt.
+Die Parameter dieser Funktion werden so bestimmt, dass die Quadratsumme der senkrechten Abweichungen der Beobachtungen von der Kurve minimiert wird.
+Also sprich die Gerade stellt die Kurve mit der geringsten Abweichungen zu den beobachteten Punkten dar und maximiert also die Wahrscheinlichkeit, dass die beobachteten Punkte nahe an der Linie liegen.
+Das wird auch als "Maximum Likeliehood Schätzer" genannt.
+
+weiterführender Link gibt detallierte Beschreibung: https://www.youtube.com/watch?v=QxP-4gZAEXI.
+
+Kennzahlen:
+
+Mit Hilfe des R2 können wir messen wie gut die Linie unsere Daten beschreiben. Es wird die Variablität durch das gefundene Modell beschrieben (Wie weit sind die Punkte von der Linie entfernt)
+
+Die Formel lautet wie folgt: 1-(Summierte Fehlerdistanz im Quadrat/Summe der quadrierten Varianz zum Durchschnitt)
+
+R2 ist 1 - perfektes Modell
+R2 ist 0 - schlechtes Modell
+
+
+-- Polynomiales Regressionsmodell--
+
+Nicht alle Beziehungen sind linear. Dafür benötigen wir die polynomiale Regression. Dabei wird in die Funktion eine Potenz eingezogen.
+
+Modell 1. Ordnung (gleich lineare Regression)
+y=ax+b
+Modell 2. Ordnung
+y= ax2+bx+c
+Modell 3. Ordnung
+y= ax3+bx2+c+d
+Modell X. Ordnung
+
+Je höher die Ordnung der Funktion, desto komplexere Kurven können gebaut werden.
+Es gibt jedoch ein Problem bei einem möglichen Overfitting. Daher verwende nur so viele Ordnungen wie möglich.
+Eine gute Überprüfung ist das anzeigen einer Kurve - Wenn sich die Kurve der Ausreißer anpasst, dann ist die Overfitted.
+
+
+
+
+
+
+Kennzahlen:
+
+Mit Hilfe des R2 können wir messen wie gut die Linie unsere Daten beschreiben. Es wird die Variablität durch das gefundene Modell beschrieben (Wie weit sind die Punkte von der Linie entfernt)
+
+Die Formel lautet wie folgt: 1-(Summierte Fehlerdistanz im Quadrat/Summe der quadrierten Varianz zum Durchschnitt)
+
+R2 ist 1 - perfektes Modell
+R2 ist 0 - schlechtes Modell
