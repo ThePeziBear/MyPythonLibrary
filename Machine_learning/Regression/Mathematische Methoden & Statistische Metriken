@@ -47,7 +47,20 @@ Die Formel lautet wie folgt: 1-(Summierte Fehlerdistanz im Quadrat/Summe der qua
 R2 ist 1 - perfektes Modell
 R2 ist 0 - schlechtes Modell
 
-Multivariante Regression:
+-- Logistische Regression --
+
+Die logistische Regression ist eine Methode der Klassifizierung. Damit können Klassifizierungsprobleme wie z.B. Erkennen vom Spam-Emails gelöst werden.
+Ein lineares Regressionsmodell lässt sich nur schlecht auf binäre Klassifikation anwenden. Für die logistische Regressionslinie können wir eine lineare
+Regression umwandeln. Die Sigmoid(logistische) Funktion nimmt jeden Wert und wandelt in einen Output zwischen 0 & 1 um.
+Dabei wird aus dem linearen Modell y=b0+b1x --> p = 1/1+e ** -(b0+b1x). Das Ergebnis ist dann eine Wahrscheinlchkeit
+aus 0 oder 1. Dabei kann die Grenze 0.5 sein. Alles drunter ist 0 & alles drüber ist 1.
+
+Kennzahlen:
+Zur Auswertung der logistischen Regression wird die Konfusionmatrix angewendet
+
+
+
+-- Multivariante Regression --
 
 Es wird weiterhin das Modell der kleinsten Quadrate verwendet. Es wird jetzt nicht 1 Variable in die Regression implementiert,
 sondern mehrere Variablen haben einen Einfluss auf die Regression.
