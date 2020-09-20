@@ -36,7 +36,12 @@ Die Standardabweichung lässt sich in der Regel einfacher interpretieren, da sie
 Momente sind Maßzahlen, die in der Mathematik für die Beschreibung einer Punktemenge verwendet werden.
 Hierdurch kannst Du die Verteilung einer Zufallsvariablen beschreiben.
 
-
+Zusammenhang zw. RSME & Standardabweichung:
+Die beiden Metriken sond konzeptionell ziemlich ähnlich.
+Die SD  misst wie weit ein tatsächlicher Wert vom Mittelwert entfernt ist.
+Das RMSE verwendet im Wesentlichen dieselbe Formel, jedoch wird gemessen, wie weit ein tatsächlicher Wert von der Vorhersage
+des Modells für diesen Wert entfernt ist. Ein gutes Modell sollte im Durchschnitt bessere Vorhersagen (RMSE) haben als die Schätzung
+des Mittelwerts für alle Vorhersagen. Daher sollte das Variationsmaß (RMSE) die Zufälligkeit besser reduzieren als die SD.
 
 
 #### Numerische Kennzahlen ####
