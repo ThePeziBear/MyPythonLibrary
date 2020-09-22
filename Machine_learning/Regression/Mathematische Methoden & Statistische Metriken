@@ -75,4 +75,4 @@ Mit Hilfe des R2 können wir messen wie gut die Linie unsere Daten beschreiben. 
 Die Formel lautet wie folgt: 1-(Summierte Fehlerdistanz im Quadrat/Summe der quadrierten Varianz zum Durchschnitt)
 
 R2 ist 1 - perfektes Modell
-R2 ist 0 - schlechtes Modell
+R2 ist 0 - bis ca.0,6 schlechtes Modell
