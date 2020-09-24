@@ -1,4 +1,4 @@
-# Erzeugung von Daten
+## Methode zur Erzeugung von Daten
 
 from numpy import random, array
 
@@ -15,13 +15,17 @@ def createClusteredData(N, k):
     X = array(X)
     return X
 
-data=createClusteredData(100,5)
+
+
+## Modellierungsprozess
 
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import scale
 from numpy import random, float
+import pandas as pd
 
+data= pd.DataFrame(createClusteredData(100,5))
 
 model = KMeans(n_clusters=5)
 
@@ -33,5 +37,5 @@ print(model.labels_)
 
 # Anzeigen der Daten in einem Grafik
 plt.figure(figsize=(8, 6))
-plt.scatter(data[:,0], data[:,1], c=model.labels_.astype(float))
+plt.scatter(data[0], data[1], c=model.labels_.astype(float))
 plt.show()
