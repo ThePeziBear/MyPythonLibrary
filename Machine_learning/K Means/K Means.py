@@ -1,5 +1,7 @@
 ## Methode zur Erzeugung von Daten
 
+## WICHTIG: K-means ist unsupervised Learning
+
 from numpy import random, array
 
 # Erstelle zufällige Einkommen / Alter - Cluster für N personen in k Cluster
