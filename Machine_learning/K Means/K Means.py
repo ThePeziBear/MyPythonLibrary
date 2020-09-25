@@ -1,6 +1,13 @@
 ## Methode zur Erzeugung von Daten
 
-## WICHTIG: K-means ist unsupervised Learning
+## WICHTIG: K-means ist unsupervised Learning.
+# k-Means Clustering ist ein unbeaufsichtigter Lernalgorithmus, der für das Clustering verwendet wird.
+# Während KNN ein überwachter Lernalgorithmus ist, der für die Klassifizierung verwendet wird.
+
+#Ziel:
+#Clustering: Das Ziel von Clustering besteht darin, eine Gruppe von Objekten zu gruppieren, um herauszufinden, ob eine Beziehung zwischen ihnen besteht.
+
+#Klassifikation: Ziel des Clusters ist es, herauszufinden, zu welcher Klasse ein neues Objekt gehört, aus dem Satz vordefinierter Klassen.
 
 from numpy import random, array
 
