@@ -68,3 +68,30 @@ WICHTIG: Vergleiche niemals Apfel mit Orangen, dh vergleiche niemals verschieden
 Vergleiche beispielsweise keine MSE-Werte mit MAE oder anderen. Sie sind anders.
 
 
+-- Metriken für Entscheidungsbäume --
+
+Entropie:
+Die Entropie gilt als das am häufigsten eingesetzte Maß für Unreinheit (Impurity) in der Informatik.
+Es wird in ähnlicher Bedeutung auch in der Thermodynamik und Fluiddynamik eingesetzt, bezieht sich dort nicht auf Daten, sondern auf die Verteilung von Temperatur-/Gas-/Flüssigkeitsgemischen.
+Stellt man sich beispielsweise ein KiBa-Getränk (Kirsch-Banane-Mischung) vor, ist die Reinheit hoch, wenn man ein zweifarbiges Getränkt vor sich sieht (z. B. unten gelb, oben rot).
+Die Unreinheit ist hoch, ist das Getränkt gut vermischt, so dass keine zwei Farben mehr zu unterscheiden sind.
+
+In der maschinellen Klassifikation bevorzugen wir Reinheit, denn je unterscheidbarer zwei (bzw. mehrere) Klassen, desto sicherer wird die Klassifikation. Somit müssen wir auch die Daten hinsichtlich ihrer Un-Reinheit bewerten können, was wir mit der Entropie im Sinne der Informatik tun:
+
+Python-Pseudo Code
+import math as math
+def entropy(p):
+    return - p * math.log2(p) - (1-p) * math.log2(1 - p)
+
+
+
+Gini-Koeffizient:
+Der Gini-Koeffizient als Maß für Unreinheit
+Der Gini-Koeffizient funktioniert ähnlich wie die Entropie und nimmt sein Maximum bei exakt gleichhäufigen Klassen an, das bei 0.5 liegt.
+Der Gini-Koeffizient hat also gegenüber der Entropie ein flacheres degressives Wachstum, reagiert demnach etwas unempfindlicher auf Änderungen in Klassenhäufigkeiten.
+
+
+Python-Pseudo Code:
+def gini(p):
+    q = 1 - p
+    return p * q+ (1 - p) * (1 - ( 1 - p))
