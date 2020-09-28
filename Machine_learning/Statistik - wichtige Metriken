@@ -95,3 +95,12 @@ Python-Pseudo Code:
 def gini(p):
     q = 1 - p
     return p * q+ (1 - p) * (1 - ( 1 - p))
+
+Der Klassifikationsfehler als Maß für die Unreinheit
+Noch unempfindlicher auf Änderungen in den Klassenhäufigkeiten (= Klassenwahrscheinlichkeiten) ist der Klassifikationsfehler:
+
+def error(p):
+    return 1 - np.max([p, 1 - p])
+
+Der Klassifikationsfehler sollte, insbesondere bei Mehrfachklassifikation, nicht zur Konstruktion für Entscheidungsbäume verwendet werden.
+Diese Maßzahl ist aber das empfohlene Maß für das nachträgliche Stutzen (Pruning) der Baumzweige (Entscheidungsbäume neigen zur großen komplexen Modellen und zum Overfitting, was durch Pruning korrigiert werden kann).
