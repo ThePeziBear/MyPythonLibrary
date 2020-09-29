@@ -15,13 +15,13 @@ elif currency == "¥":
 else:
     print("Sonst")
 
-Bearbeiten von Listen
+-- Bearbeiten von Listen
 liste1.strip() - Entefernen des Absatzzeichens \ln (UC_Teil-daten_extrahieren_ohne Visualisierung)
 liste1.split('Zeichen bei dem gesplilted gehört z.B ;') (UC_Teil-daten_extrahieren_ohne Visualisierung)
 liste1.split()[1] #Splitfunktion bezieht sich auf das 2. Element (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
 dictionary.items() - Ausgabe eines Dictionaries als Liste (ohne : zum besseren verarbeiten) (UC_Dictionaries_Geburtstatistk)
 For-Schleife und IF Abfrage auf Basis einer Vergleichsoperation (UC Teil Daten extrahieren ohne Visualsierung)
-
+-------------------------------------------------------------------------------------------------------------
 liste1.append('Variablen die angehängt gehören') - Zusammenführen von Listen oder Liste mit zusätzlichen Einträgen
 liste1.remove('Eintrag') - Löschen eines Eintrages in Liste
 liste1.sort() - Sortierung der Liste aufsteigend (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
@@ -29,23 +29,32 @@ liste1.sort(reverse=True) - Sortierung der Liste absteigend (08_Datenstrukturen_
 liste1.sort(key=len) - Alternative schreibweise für die Sortierung nach Namenslänge (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
 liste1.sort(key=lambda i: i[1]) - Ausgabe von einem Dictionary eines Wertes (08_Datenstrukturen_&_Datensortierung_in_Pyhton)
 
-variable Funktionsparameter übergeben
+
+
+-- variable Funktionsparameter übergeben
 def calculate_max(*params) - Funktion kann mit * variable Anzahl von Parametern entegennehmen für eine Liste (UseC_variable_Funktionsparameter_übergeben)
 def f(**args) - Funktion kann mit ** variable Anzahl von Parametern entegennehmen für ein Dictionary (UseC_variable_Funktionsparameter_übergeben)
 
-Suchfunktion über reguläre Ausdrücke
+
+
+-- Suchfunktion über reguläre Ausdrücke
 import re
 sentence = "Ich habe 30 Hunde, die jeweils 4 Liter Wasser brauchen und 2 kg Nahrung."
+-------------------------------------------------------------------------------------------------------------
 re.findall("[0-9]+", sentence) # Finde alle Zahlen zwischen 0 & 9. Das + bedeutet, dass auch eine weitere Zahl erkannt wird z.B. 3 und 30
+-------------------------------------------------------------------------------------------------------------
 re.search("der?", "Hallo der Hallo") # Das ? definiert dass das r optional ist
+-------------------------------------------------------------------------------------------------------------
 print(re.search("der*", "Hallo de Hallo")) # Das * definiert, dass das r optional ist.
 print(re.search("der*", "Hallo derrrrrrrr Hallo")) # Das * definiert, auch dass nach dem r beliebig viele andere r optional sind.
 WICHTIG: https://regexr.com/ & https://docs.python.org/3/library/re.html - Cheatsheets bzw. Erklärungen von Suchabfragen
 
-Filterfunktion mit Lambda:
+
+
+-- Filterfunktion mit Lambda:
 seq = ["suppe","hund","salat","katze","toll"]
 list(filter(lambda wort: wort[0]=='s',seq)) # Alle Wörter die mit s beginnen
-
+-------------------------------------------------------------------------------------------------------------
 Konvertieren von 1) DateFrame auf Liste & 2) von Liste auf String
 liste = Dataframe.to_list() #Convert DF to list
 string = ''.join(str(i) for i in liste) #Convert list to string
@@ -54,66 +63,90 @@ string = ''.join(str(i) for i in liste) #Convert list to string
 
 #######################Python Pandas:######################################################
 
-Erstellen einer Series:
+-- Erstellen einer Series:
 Serie = pd.Series(variable1,variable2) (UC_Klassifzierung_Rename_Array_Numpy)
 new_Name_series = series.rename['neuer Name'] (UC_Klassifzierung_Rename_Array_Numpy)
 
-Einlesen vom DataFrame:
+-- Einlesen vom DataFrame:
 df = pd.read_csv() - Einlesen CSV
 df = pd.table_csv() - Einlesen diverser Formate automatisch
 
-Zugriff auf DataFrame:
+-- Zugriff auf DataFrame:
 df["Name der Spalte"] - Zugriff auf Spalte(Column)
+-------------------------------------------------------------------------------------------------------------
 for name in df["Name des df"] - Zugriff auf Spalte als Series ohne Index
+-------------------------------------------------------------------------------------------------------------
 df.iloc[0] - Zugriff auf Spalte als Series ohne Index
+-------------------------------------------------------------------------------------------------------------
 df.index - Zugriff auf den Index.
 df.index[0] - Zugriff auf ersten Indexeintrag
+-------------------------------------------------------------------------------------------------------------
 df.iloc[0]['Spaltenname'] - Zugriff auf die erste Zeile einer gewählten Spalte
 df.iloc[0:4] - Zugriff via List Slicing auf der Einträge zwischen 1 und 5
 df.iloc[-5:] - Zugriff via List Slicing auf die letzten 5 Einträge
+-------------------------------------------------------------------------------------------------------------
 iterrows() -  Zugriff auf jede Zeile des Dataframes mit einer For Schleife.
+-------------------------------------------------------------------------------------------------------------
 df['Name der Spalte'].idxmax() - Zugriff auf größte Zahl der Spalte
 df['Name der Spalte'].idxmin() - Zugriff auf kleinste Zahl der Spalte
+-------------------------------------------------------------------------------------------------------------
 df[df['Spaltenname'].str.startswith('gesuchtes Teilwort') - durchsuchen einer Spalte auf Teilzeichen
+-------------------------------------------------------------------------------------------------------------
 df.first_valid_index() - Zugriff auf ersten Index Eintrag (UC_Pandas_max_min_Werte_vergleichen)
 
-Filtern vom DataFrame:
+-- Filtern vom DataFrame:
 df['Name der Spalte'] < int(1990) - Ausgabe Booleans ob Vergleich stimmt
 df[df['Name der Spalte'] < int(1990)] - Ausgabe des  Dataframes bei Boolean True
 df_new = df[['Spalte1', 'Spalte2', 'SpalteN']]  # Auswahl der benötigten Columns für Dataframe
 df[df['Name der Spalte'] == 'Gesuchter Eintrag z.B. Name eines Mitarbeiters']['Spaltenname auf die gifiltert wird z.B. Jahresgehalt'] # Vergleichsoperation
 df.isnull() - Ausgabe von allen Werten die keinen Eintrag (NaN) haben. Dabei ist der Boolean True der fehlende Wert
 
-Mehrfach filtern von DataFrame:
+
+
+-- Mehrfach filtern von DataFrame:
 df2 = df[df['Year'] < 1990] - 1. Ausgabe Filterung auf Personen unter 1990
 df3 = df2[df2['Gender'] =='Male] - 2 Ausgabe Filterung Male und Filter aus 1. Ausgabe --> Filter Personen < 1990 & Male
 df2 = df[df['Year']<'1990']['Male'] - komprimiertere Schreibweise und ersetzt Zeile 81 & 82
-
 -------------------------------------------------------------------------------------------------------------
 status1 = df['Status'] == 'Management' - Ausgabe Personen mit MGMT
 status2 = df['Status'] == 'Active' - Ausgabe Personen die noch Active sind
 df_new = df[(status1|status2) - Ausgabe Dataframe aufgrund Filterung MGMT & Active
-
+-------------------------------------------------------------------------------------------------------------
 df.unique() - Ausgabe der Zeilen ohne Mehrfachausgabe z.B. Apple kommt nur 1 mal vor und nicht 500mal (UC_for_easy_interpret_data_use_unique func_to_map_values)
 
-Sortieren, Einfügen, Konvertieren, Umbenennen, Überschreiben, Löschen, gruppieren in einem DataFrames
+
+
+-- Sortieren, Einfügen, Konvertieren, Umbenennen, Überschreiben, Löschen, gruppieren in einem DataFrames
 df.sort_values('Name der Spalte', ascending = False) - Sortierung der Werte auf(ascending=True) oder absteigend (ascending=False)
+-------------------------------------------------------------------------------------------------------------
 df['Bezeichnung neues Spalte'] = df[Spaltenname 1] * df[Spaltenname 2] - Anlegen neuer Spalte mit einer Multiplikation
+-------------------------------------------------------------------------------------------------------------
 df.transponse - Konvertieren von Rows in columns
-df.columns=df[['neuer Spaltenname1', 'neuer Spaltenname2', 'neuer SpaltennameN']] - Umbenennen der Spaltenname eines DataFrames
+-------------------------------------------------------------------------------------------------------------
+df.columns=df[['neuer Spaltenname1', 'neuer Spaltenname2', 'neuer SpaltennameN']] - Umbenennen der Spaltenname eines DataFrame
+-------------------------------------------------------------------------------------------------------------
 df['Spaltenname mit Änderung der Z-Einträge'].replace('...', np.NaN) - Ersetzen von ... durch np.NAN (UC_Correlation_Python_Pandas)
 df['Spaltenname mit Änderung der Z-Einträge'].str.replace('\(.*\)', ' ')  - Ersetzen einer Klammer mit String-Inhalt (UC_Correlation_Python_Pandas)
 df['Spaltenname mit Änderung der Z-Einträge'].str.replace('([0-9]+)$', ' ')  - Ersetzen einer Klammer mit String-Inhalt (UC_Correlation_Python_Pandas)
 df['Spaltenname'] = df['Spaltenname'].replace({'Key1': 'Value1','Key2': 'Value2'}) - Ersetzen von einem bestimmten Zeileneintrag durch einen anderen Zeileneintrag (UC_Correlation_Python_Pandas)
+-------------------------------------------------------------------------------------------------------------
 df.drop('zu löschende Spalte', axis = 1, inplace =True) - Spalte in Dataframe wird gelöscht
+-------------------------------------------------------------------------------------------------------------
 df.groupby('Spalte die gruppiert wird')['Spalte für Rechenoperation'].sum() - Gruppieren von Spalte und anschließend Rechenoperation (UC_Group_by_Berechnung_relativesVerhältnis)
+-------------------------------------------------------------------------------------------------------------
 df['Spaltenname']=df['Spaltenname'].apply(lambda x: 1 if x== 'Vergleichsvariable' else 0) (UC_Group_by_Berechnung_relativesVerhältnis_im_Dataframe_Pandas)
+-------------------------------------------------------------------------------------------------------------
 df['Spaltenname'].astype(int) - Werte in eine Zahl umwandeln (Booleans auch möglich)
+-------------------------------------------------------------------------------------------------------------
 df['Spaltenname'].str.split("/") - Werte Splitten von einer Spalte in einem Dataframe
+-------------------------------------------------------------------------------------------------------------
 df['Spaltenname NEU']= df['Spaltenname'].apply(func (z.B. len oder auch selbstkreierte def)). https://thispointer.com/pandas-apply-apply-a-function-to-each-row-column-in-dataframe/
+-------------------------------------------------------------------------------------------------------------
 
 
-Zusammenführen von DataFrames und Listen
+
+
+-- Zusammenführen von DataFrames und Listen
 Merge-Funktion für DataFrame: (UC_Group_by_Maping_von_Daten_Pandas)
 dfmerge1 = pd.merge(DataFrame1, DataFrame2, how='inner', left_on='Country', right_on='Country Name').set_index('Auswahl Spalte als Index')
 dfmerge2 = dfmerge2[['Spalte1', 'Spalte2', 'SpalteN']] # Auswahl der zu anzeigenden Spalten aus den 2 Datasets.
@@ -124,18 +157,26 @@ dfjoined2 = dfjoined2[['Spalte1', 'Spalte2', 'SpalteN']] # Auswahl der zu anzeig
 -------------------------------------------------------------------------------------------------------------
 Concat Funktion zur Erstellung DataFrame
 df = pd.concat([list1, list2, list3], axis = 1, ignore_index=True) - zusammenführe von Listen zu einem Dataframe
-
+-------------------------------------------------------------------------------------------------------------
 Erstellen von einem Dictionary: (UC_for_easy_intrepret_data_use_unique_func_to_map_values)
 1. Step: key = [Liste] 2. Step: value = [liste] 3.Step: dict(zip(key,value))
 
-Berechnungen DataFrame:
+
+
+-- Berechnungen DataFrame:
 df.corr()
+-------------------------------------------------------------------------------------------------------------
 df['Spaltenname'].median() - Berechnung Median einer Spalte
+-------------------------------------------------------------------------------------------------------------
 max(axis='columns') - min(axis='columns') -  höchste Wert des Zeileneintrags über Dataframe (z.B. Zeile 1) minus niedrigster Wert des Zeileneintrags über Dataframe (z.B. Zeile 2)
+-------------------------------------------------------------------------------------------------------------
 max(axis='index') - min(axis='index') - höchster Wert einer Spalte minus niedrigsten Wert einer Spalte
+-------------------------------------------------------------------------------------------------------------
 df('Spaltenname1') > df('Spaltenname') --> Boolean - Mit outpout.astype(int) Ausgabe von 0 & 1  (UC_Vergleichsoperation_Pandas)
 
-Statistische Kennzahlen:
+
+
+-- Statistische Kennzahlen:
 df.describe() # Ausgabe von Count, unique, top, frequency, mean, std, quantil etc.. Die Statistichen Kennzahlen können varieren. siehe: https://www.w3resource.com/pandas/dataframe/dataframe-describe.php
 
 
