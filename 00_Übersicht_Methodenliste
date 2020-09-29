@@ -143,7 +143,10 @@ df['Spaltenname'].str.split("/") - Werte Splitten von einer Spalte in einem Data
 df['Spaltenname NEU']= df['Spaltenname'].apply(func (z.B. len oder auch selbstkreierte def)). https://thispointer.com/pandas-apply-apply-a-function-to-each-row-column-in-dataframe/
 -------------------------------------------------------------------------------------------------------------
 a = {'kategorischer Wert 1':'ordinaler/numerischer Wert 1', 'kategorischer Wert2':'ordinaler/numerischer Wert 2'} #Dictionary für die Umwandlung der kategorischen Werte zu ordinalen/numerischen Werten
-df['neue Spalte nach Umwandlung kategorisch auf numerisch']=df['Spalte für Umwandlung kategorisch auf numerisch'].map(a) # Mit map() wird die Umwandlung gemappt und man erhält die neue Spalte.
+df['neue Spalte nach Umwandlung kategorisch auf numerisch']=df['Spalte für Umwandlung kategorisch auf numerisch'].map(a) # Mit map() wird die Umwandlung gemappt und man erhält die neue Spalte. (Machine Learning Decision Trees)
+-------------------------------------------------------------------------------------------------------------
+pd.get_dummies(df['Spalte für die Umwandlung von kategorischen Wert auf Boolean'],drop_first=True) # Unterscheidung einre 2 dimensionalen Kategorie in Booleans 0 &1. (Machine Learning - logistic Regression)
+mit drop_first wird eine Spalte gelöscht, das wir so die Unterscheidung von 0 & 1 in einer Spalte abbilden können.
 
 
 
