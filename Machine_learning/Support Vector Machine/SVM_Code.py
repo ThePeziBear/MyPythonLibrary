@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-# Erstelle zufällige Einkommens / Alter - Daten für N Personen in k Clustern
+# Methode zum Erstelle von zufälligen Einkommens / Alter - Daten für N Personen in k Clustern
 def createClusteredData(N, k):
     pointsPerCluster = float(N)/k
     X = []
@@ -19,7 +19,6 @@ def createClusteredData(N, k):
 
 
 
-#%matplotlib inline
 from pylab import *
 
 (X, y) = createClusteredData(100, 5)
@@ -27,6 +26,7 @@ from pylab import *
 df=pd.DataFrame(data=X)
 df=df.rename(columns={0:'income', 1:'age'})
 
+#Normalisieren der Werte
 norm_income = [float(i)/max(df['income']) for i in df['income']]
 norm_age = [float(i)/max(df['age']) for i in df['age']]
 
@@ -36,3 +36,14 @@ X=df_scaled.to_numpy()
 plt.figure(figsize=(8, 6))
 plt.scatter(X[:,0], X[:,1], c=y.astype(np.float))
 plt.show()
+
+#Trainiere Modell
+from sklearn import svm, datasets
+C=1.0
+svc=svm.SVC(kernel='linear',C=C).fit(X,y)
+
+#Überprüfe Modelle-Güte
+score= svc.score(df_scaled,y)
+
+# Setze Punkte ein und lasse dir Prognose geben
+print(svc.predict([[0.4,0.6]]))
