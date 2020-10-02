@@ -15,7 +15,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random
 from sklearn.svm import SVC
 svc_model = SVC() #Instanzieren des Algorithmus
 svc_model.fit(X_train,y_train) #Training
-predictions = svc_model.predict(X_test) # Vorhersage
+predictions_svm = svc_model.predict(X_test) # Vorhersage
             # Gridsearch - siehe Beispiel SVM
             # Die richtigen Parameter zu finden (wie C oder Gamma Werte) ist etwas knifflig.
             # Glücklicherweise können wir ein bisschen "faul" sein und eine Kombination verschiedener Varianten testen und sehen was am besten funktioniert.
@@ -24,11 +24,28 @@ predictions = svc_model.predict(X_test) # Vorhersage
             # Dabei steht das CV für "Cross Validation". Und dies wiederum bedeutet, dass GridSearchCV ein Dictionary verwendet, das die Parameter beschreibt, die getestet werden sollen, und ein Modell, das es zu trainieren gilt
 
 
+#Decision Tree
+from sklearn.tree import DecisionTreeClassifier
+dtree = DecisionTreeClassifier()
+
+dtree.fit(X_train,y_train)
+predictions_trees = dtree.predict(X_test)
+
+#Random Forrest
+from sklearn.ensemble import RandomForestClassifier
+rfc = RandomForestClassifier(n_estimators=10)
+rfc.fit(X_train, y_train)
+predictions_r_forest = rfc.predict(X_test)
 
 
 ## Auswertungen
 from sklearn.metrics import classification_report,confusion_matrix
-print(confusion_matrix(y_test,predictions))
-print(classification_report(y_test,predictions))
 
+matrix_svm= confusion_matrix(y_test,predictions_svm)
+report_svm= classification_report(y_test,predictions_svm)
 
+matrix_trees= confusion_matrix(y_test,predictions_trees)
+report_trees= classification_report(y_test,predictions_trees)
+
+matrix_r_forest= confusion_matrix(y_test,predictions_r_forest)
+report_r_forest= classification_report(y_test,predictions_r_forest)
