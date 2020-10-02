@@ -1,7 +1,27 @@
 import seaborn as sns
+import pandas as pd
+import numpy as np
+
+##Datasets
+
+#Dataset für labeled Data
 iris = sns.load_dataset('iris')
 X = iris.drop('species',axis=1)
 y = iris['species']
+
+#Dataset für numeric Data
+from sklearn.datasets import load_boston
+boston = load_boston()
+df = pd.DataFrame(boston['data'],columns = boston['feature_names'])
+df['PRICE'] = boston['target']
+X_n = df[['CRIM', 'ZN', 'INDUS','CHAS', 'NOX','RM', 'AGE','DIS','RAD','TAX','PTRATIO','B','LSTAT']]
+y_n = df['PRICE']
+
+# Training und Testdaten definieren
+from sklearn.model_selection import train_test_split
+X_train_n, X_test_n, y_train_n, y_test_n = train_test_split(X_n, y_n, test_size=0.4, random_state=101)
+
+# Erstellung und Training des Modells
 
 ## Train Test Split
 from sklearn.model_selection import train_test_split
@@ -10,6 +30,15 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random
 
 
 ## Modelle:
+
+from sklearn.linear_model import LinearRegression
+lm = LinearRegression()
+lm.fit(X_train_n,y_train_n)
+
+predictions_linear_reg=lm.predict(X_test_n)
+
+
+
 
 # Suport Vector Machine
 from sklearn.svm import SVC
@@ -39,8 +68,9 @@ predictions_r_forest = rfc.predict(X_test)
 
 
 ## Auswertungen
-from sklearn.metrics import classification_report,confusion_matrix
 
+#Classifaction Metriken
+from sklearn.metrics import classification_report,confusion_matrix
 matrix_svm= confusion_matrix(y_test,predictions_svm)
 report_svm= classification_report(y_test,predictions_svm)
 
@@ -49,3 +79,10 @@ report_trees= classification_report(y_test,predictions_trees)
 
 matrix_r_forest= confusion_matrix(y_test,predictions_r_forest)
 report_r_forest= classification_report(y_test,predictions_r_forest)
+
+
+#numerische Metriken
+from sklearn import metrics
+MAE_linear_r=metrics.mean_absolute_error(y_test, predictions_linear_reg)
+MSE_linear_r= metrics.mean_squared_error(y_test, predictions_linear_reg)
+RMSE_linear_r= np.sqrt(metrics.mean_squared_error(y_test, predictions_linear_reg))
