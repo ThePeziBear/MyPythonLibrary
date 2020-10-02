@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)#, random_state=101)
 
 
-# Suport Vector Machine
+## Suport Vector Machine
 from sklearn.svm import SVC
 svc_model = SVC(C=1, kernel='linear') #Instanzieren des Algorithmus;
 # C (Soft Margin) gibt die Toleranz der missklassifizierten Werte an. Je kleiner desto größer die Toleranz. default-value ist 1
@@ -28,8 +28,8 @@ predictions = svc_model.predict(X_test) # Vorhersage
 
 ## Auswertung ohne Gridsearch
 from sklearn.metrics import classification_report,confusion_matrix
-print(confusion_matrix(y_test,predictions))
-print(classification_report(y_test,predictions))
+c_matrix= confusion_matrix(y_test,predictions)
+c_report= classification_report(y_test,predictions)
 
 #Was ist Gridsearch?
 #Die richtigen Parameter zu finden (wie C oder Gamma Werte) ist etwas knifflig.
@@ -39,7 +39,7 @@ print(classification_report(y_test,predictions))
 # Dabei steht das CV für "Cross Validation".
 # Und dies wiederum bedeutet, dass GridSearchCV ein Dictionary verwendet, das die Parameter beschreibt, die getestet werden sollen, und ein Modell, das es zu trainieren gilt
 
-## Gridsearch von Sklearn
+## Gridsearch von Sklearn:
 
 # Auswahl von verschiedenen Parametern für C und Gamma & die Kernel Funktion
 param_grid = {'C': [0.1,1, 10, 100, 1000], 'gamma': [1,0.1,0.01,0.001,0.0001], 'kernel': ['rbf']}
@@ -51,12 +51,19 @@ grid = GridSearchCV(SVC(),param_grid,refit=True,verbose=3)
 # Refit = True - Beim Suchen der besten Parameter soll der Wert immer auf True sein.
 # verbose= gibt die Anzahl der Zwischenschritte wider
 
+
+# Modell mit den neuen C und Gamme werten neu trainieren
 grid.fit(X_train,y_train)
 
-grid.best_params_
+# Den besten Parameter erhalten wir durch
+print(grid.best_params_)
 
-grid.best_estimator_
+#Die besten parameter geben sich dann im Modell wieder.
+print(grid.best_estimator_)
 
+# Prediction des Modells mit gridsearch
 grid_predictions = grid.predict(X_test)
-print(confusion_matrix(y_test,grid_predictions))
-print(classification_report(y_test,grid_predictions))
+
+# Auswertung des Modells mit gridsearch
+c_matrix_cv= confusion_matrix(y_test,grid_predictions)
+c_report_cv= classification_report(y_test,grid_predictions)
