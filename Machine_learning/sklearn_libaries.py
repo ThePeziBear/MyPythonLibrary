@@ -39,7 +39,11 @@ lm.fit(X_train_n,y_train_n)
 predictions_linear_reg=lm.predict(X_test_n)
 
 
-
+# logistic Regression
+from sklearn.linear_model import LogisticRegression
+log_model= LogisticRegression()
+log_model.fit(X_train, y_train)
+predictions_logistic_reg = log_model.predict(X_test)
 
 # Suport Vector Machine
 from sklearn.svm import SVC
@@ -80,6 +84,9 @@ report_trees= classification_report(y_test,predictions_trees)
 
 matrix_r_forest= confusion_matrix(y_test,predictions_r_forest)
 report_r_forest= classification_report(y_test,predictions_r_forest)
+
+matrix_r_logisitc_reg= confusion_matrix(y_test,predictions_logistic_reg )
+report_r_logistic_reg= classification_report(y_test,predictions_logistic_reg )
 
 
 #numerische Metriken
