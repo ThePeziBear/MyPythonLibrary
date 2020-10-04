@@ -31,6 +31,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random
 
 ## Modelle:
 
+# lineare Regression
 from sklearn.linear_model import LinearRegression
 lm = LinearRegression()
 lm.fit(X_train_n,y_train_n)
@@ -83,6 +84,6 @@ report_r_forest= classification_report(y_test,predictions_r_forest)
 
 #numerische Metriken
 from sklearn import metrics
-MAE_linear_r=metrics.mean_absolute_error(y_test, predictions_linear_reg)
-MSE_linear_r= metrics.mean_squared_error(y_test, predictions_linear_reg)
-RMSE_linear_r= np.sqrt(metrics.mean_squared_error(y_test, predictions_linear_reg))
+MAE_linear_r=metrics.mean_absolute_error(y_test_n, predictions_linear_reg)
+MSE_linear_r= metrics.mean_squared_error(y_test_n, predictions_linear_reg)
+RMSE_linear_r= np.sqrt(metrics.mean_squared_error(y_test_n, predictions_linear_reg))
