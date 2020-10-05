@@ -24,6 +24,6 @@ plt.show()
 # Berechnen des r2
 from sklearn.metrics import r2_score
 
-r2 = r2_score(y, p4(x))
+r2 = r2_score(y, p8(x))
 
 print(r2)
