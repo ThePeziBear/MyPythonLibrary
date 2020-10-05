@@ -52,9 +52,12 @@ import statsmodels.api as sm
 X1 = sm.add_constant(X_n)
 est = sm.OLS(y_n, X1).fit()
 
-##Regression einer Polynomfunktion 8 Grades mit 2 Variablen
+##Regression mit Polynom???? ### recherche muss noch gemacht werden
 p8 = np.poly1d(np.polyfit(X_n['AGE'], y_n, 8))
 
+## Multivariate Polynomfunktion???
+#https://towardsdatascience.com/polynomial-regression-with-scikit-learn-what-you-should-know-bed9d3296f2
+#https://stackoverflow.com/questions/54891965/multivariate-polynomial-regression-with-python
 
 # Suport Vector Machine
 from sklearn.svm import SVC
