@@ -45,6 +45,14 @@ log_model= LogisticRegression()
 log_model.fit(X_train, y_train)
 predictions_logistic_reg = log_model.predict(X_test)
 
+#multivariante Regression
+
+import statsmodels.api as sm
+## Modellerstellung
+X1 = sm.add_constant(X_n)
+est = sm.OLS(y_n, X1).fit()
+
+
 # Suport Vector Machine
 from sklearn.svm import SVC
 svc_model = SVC() #Instanzieren des Algorithmus
@@ -90,7 +98,12 @@ report_r_logistic_reg= classification_report(y_test,predictions_logistic_reg )
 
 
 #numerische Metriken
+
+# lineare Regression
 from sklearn import metrics
 MAE_linear_r=metrics.mean_absolute_error(y_test_n, predictions_linear_reg)
 MSE_linear_r= metrics.mean_squared_error(y_test_n, predictions_linear_reg)
 RMSE_linear_r= np.sqrt(metrics.mean_squared_error(y_test_n, predictions_linear_reg))
+
+# multivariante Regression
+metrik_multivariante_regression = est.summary()
