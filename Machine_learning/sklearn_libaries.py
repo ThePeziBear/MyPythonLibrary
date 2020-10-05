@@ -52,6 +52,9 @@ import statsmodels.api as sm
 X1 = sm.add_constant(X_n)
 est = sm.OLS(y_n, X1).fit()
 
+##Regression einer Polynomfunktion 8 Grades mit 2 Variablen
+p8 = np.poly1d(np.polyfit(X_n['AGE'], y_n, 8))
+
 
 # Suport Vector Machine
 from sklearn.svm import SVC
@@ -101,9 +104,15 @@ report_r_logistic_reg= classification_report(y_test,predictions_logistic_reg )
 
 # lineare Regression
 from sklearn import metrics
+from sklearn.metrics import r2_score
+
 MAE_linear_r=metrics.mean_absolute_error(y_test_n, predictions_linear_reg)
 MSE_linear_r= metrics.mean_squared_error(y_test_n, predictions_linear_reg)
 RMSE_linear_r= np.sqrt(metrics.mean_squared_error(y_test_n, predictions_linear_reg))
 
-# multivariante Regression
+# multivariante lineare Regression
 metrik_multivariante_regression = est.summary()
+
+#Regression mit variabeln Polynomfunktion 8 Grades
+from sklearn.metrics import r2_score
+r2_poly = r2_score(y_n, p8(X_n['AGE']))
