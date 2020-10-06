@@ -45,7 +45,7 @@ log_model= LogisticRegression()
 log_model.fit(X_train, y_train)
 predictions_logistic_reg = log_model.predict(X_test)
 
-#multivariante Regression
+#multivariante lineare Regression
 
 import statsmodels.api as sm
 ## Modellerstellung
@@ -86,6 +86,15 @@ rfc.fit(X_train, y_train)
 predictions_r_forest = rfc.predict(X_test)
 
 
+#KNN
+
+from sklearn.neighbors import KNeighborsClassifier
+
+knn = KNeighborsClassifier(n_neighbors=4,algorithm='auto',metric='euclidean') # Auswahl der Paramater für das Modell: Anzahl Nearst neighbor, Algorithmus(auto,kd_tree etc) Metric(euclidean distance, manhattan etc)
+knn.fit(X_train,y_train)
+predictions_knn =knn.predict(X_test)
+
+
 ## Auswertungen
 
 #Classifaction Metriken
@@ -101,6 +110,9 @@ report_r_forest= classification_report(y_test,predictions_r_forest)
 
 matrix_r_logisitc_reg= confusion_matrix(y_test,predictions_logistic_reg )
 report_r_logistic_reg= classification_report(y_test,predictions_logistic_reg )
+
+matrix_knn= confusion_matrix(y_test,predictions_knn)
+report_knn= classification_report(y_test,predictions_knn)
 
 
 #numerische Metriken
