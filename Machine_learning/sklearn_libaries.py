@@ -46,7 +46,6 @@ log_model.fit(X_train, y_train)
 predictions_logistic_reg = log_model.predict(X_test)
 
 #multivariante lineare Regression
-
 import statsmodels.api as sm
 ## Modellerstellung
 X1 = sm.add_constant(X_n)
@@ -87,7 +86,6 @@ predictions_r_forest = rfc.predict(X_test)
 
 
 #KNN
-
 from sklearn.neighbors import KNeighborsClassifier
 
 knn = KNeighborsClassifier(n_neighbors=4,algorithm='auto',metric='euclidean') # Auswahl der Paramater für das Modell: Anzahl Nearst neighbor, Algorithmus(auto,kd_tree etc) Metric(euclidean distance, manhattan etc)
