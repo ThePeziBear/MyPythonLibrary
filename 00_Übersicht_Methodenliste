@@ -147,7 +147,8 @@ df['neue Spalte nach Umwandlung kategorisch auf numerisch']=df['Spalte für Umwa
 -------------------------------------------------------------------------------------------------------------
 pd.get_dummies(df['Spalte für die Umwandlung von kategorischen Wert auf Boolean'],drop_first=True) # Unterscheidung einre 2 dimensionalen Kategorie in Booleans 0 &1. (Machine Learning - logistic Regression)
 mit drop_first wird eine Spalte gelöscht, das wir so die Unterscheidung von 0 & 1 in einer Spalte abbilden können.
-
+-------------------------------------------------------------------------------------------------------------
+table = pd.pivot_table(df,values='rating',index='user_id',columns='title',aggfunc='mean') #table(Dataframe,values=anzeigender Wert, index=Index, columns=Spalten, aggfunc ist die Rechenoperation (mean,count,sSdev)
 
 
 -- Zusammenführen von DataFrames und Listen
