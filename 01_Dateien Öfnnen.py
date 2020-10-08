@@ -44,7 +44,7 @@ with open("../data/names.csv", "r") as file:
 # CSV lesen mittels Pandas
 import pandas as pd
 df = pd.read_csv("C:/Users/test/Documents/Udemy/Python/Kursmaterialien-2019/Kursmaterialien/data/astronauts.csv")
-------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------
 df1 = pd.read_csv('./ml-100k/u.data',sep='\t',names=('user_id', 'movie_id', 'rating'),usecols=range(3))
 # names setzt Spaltenname - Damit wird nicht erster Eintrag als Spaltenname definiert; usecols schränkt die Anzahl der Spalten ein
 
