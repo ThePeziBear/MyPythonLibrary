@@ -65,6 +65,5 @@ with urllib.request.urlopen(url) as response, open(file_name, 'wb') as out_file:
     with zipfile.ZipFile(file_name) as zf:
         zf.extractall()
 
-print(pd.read_csv('./ml-100k/u.data',sep='\t'))
-
-
+ratings = pd.read_csv('./ml-100k/u.data',sep='\t',names=('user_id', 'movie_id', 'rating'),usecols=range(3)) # names setzt Spaltenname - Damit wird nicht erster Eintrag als Spaltenname definiert; usecols schränkt die Anzahl der Spalten ein
+movies =pd.read_csv('./ml-100k/u.item',sep='|', names=('movie_id', 'title'), usecols=range(2), encoding="ISO-8859-1",error_bad_lines=False)
