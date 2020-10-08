@@ -51,4 +51,20 @@ df = pd.read_excel("C:/Users/test/Documents/Udemy/Python/Kursmaterialien-2019/Ku
 print(df.head())
 
 
+## Zip Datei einlesen ##
+
+import zipfile
+import urllib.request
+import shutil
+
+url = 'http://files.grouplens.org/datasets/movielens/ml-100k.zip'
+file_name = 'ml-100k.zip'
+
+with urllib.request.urlopen(url) as response, open(file_name, 'wb') as out_file:
+    shutil.copyfileobj(response, out_file)
+    with zipfile.ZipFile(file_name) as zf:
+        zf.extractall()
+
+print(pd.read_csv('./ml-100k/u.data',sep='\t'))
+
 
