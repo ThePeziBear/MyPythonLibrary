@@ -35,21 +35,18 @@ table_sw=table['Star Wars (1977)']
 similarMovies=table.corrwith(table_sw)
 similarMovies=similarMovies.dropna()
 similarMovies=pd.DataFrame(similarMovies)
+similarMovies=similarMovies.sort_values(by=0,ascending=False)
 
 #Wenn man jetzt die Ergebnisse nach Ähnlichkeitswert sortiert, sollten oben die Filme stehen, die ähnlich zu Star Wars sind.
 # Aufgrund der hohen Anzahl von Korrelationen um die 1 dürfte es sich hier um Ausreißer handeln.  Unsere Ergebnisse werden duch
 # ein paar Filme beeinflusst die von nur wenigen Benutzern gesehen wurden. Diese Ausreißer müssen elemeniert werden.
-similarMovies=table.corrwith(table_sw)
-similarMovies=similarMovies.dropna()
-similarMovies=pd.DataFrame(similarMovies)
-similarMovies=similarMovies.sort_values(by=0,ascending=False)
-
 #Wir erstellen daher ein neues DataFrame, welches zu jedem Film die Anzahl speichert, wie oft dieser Film bewertet wurde
 # und was die durchschnittliche Bewertung war. Das könnte später nützlich sein:
+
 df1=pd.DataFrame(ratings.groupby('title')['rating'].count())
 df2=pd.DataFrame(ratings.groupby('title')['rating'].mean())
 df_merged=pd.merge(df1,df2,how='inner',left_on='title',right_on='title')
-df_merged=df_merged.rename(columns={"rating_x": "Count", "rating_y": "Mean", 0:'Similarity'})
+df_merged=df_merged.rename(columns={"rating_x": "Count", "rating_y": "Mean"})
 
 
 
@@ -60,3 +57,5 @@ df_100=df_100.rename(columns={0:'Similarity'})
 df_100=df_100.sort_values('Similarity', ascending = False)# - Sortierung der Werte auf(ascending=True) oder absteigend (ascending=False)
 df_100.head(12)
 # Jetzt macht die Modellierung Sinn!!
+
+table_check=table[['Star Wars (1977)','Empire Strikes Back, The (1980)','Batman (1989)']]
