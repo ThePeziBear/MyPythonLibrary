@@ -93,6 +93,8 @@ df['Name der Spalte'].idxmin() - Zugriff auf kleinste Zahl der Spalte
 df[df['Spaltenname'].str.startswith('gesuchtes Teilwort') - durchsuchen einer Spalte auf Teilzeichen
 -------------------------------------------------------------------------------------------------------------
 df.first_valid_index() - Zugriff auf ersten Index Eintrag (UC_Pandas_max_min_Werte_vergleichen)
+df.index +=1 - Veränderung des Index von 0 auf 1
+
 
 -- Filtern vom DataFrame:
 df['Name der Spalte'] < int(1990) - Ausgabe Booleans ob Vergleich stimmt
