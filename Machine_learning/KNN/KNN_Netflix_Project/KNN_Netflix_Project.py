@@ -97,7 +97,7 @@ from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=30)
 classifier.fit(X_train, y_train)
 
-Predicting the Test set results
+#Predicting the Test set results
 pred = classifier.predict(X_test)
 pred.shape
 
