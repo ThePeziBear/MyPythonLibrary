@@ -1,23 +1,21 @@
-## Dataset import
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-df1=pd.read_csv('./ml-100k/u.data',sep='\t',names=('user_id', 'movie_id', 'rating'),usecols=range(3))
+
+df1 = pd.read_csv('./ml-100k/u.data', sep='\t', names=('user_id', 'movie_id', 'rating'), usecols=range(3))
 df1
 
-
-## Select Feature und Target Values
-df1_mean=df1.groupby('movie_id')['rating'].mean()
-df1=df1.groupby('movie_id').count()
-df1['mean']=df1_mean.round(0)
-df1.drop('user_id',axis=1,inplace=True)
-df1.rename(columns={'rating':'size','mean':'target_rating'},inplace=True)
+df1_mean = df1.groupby('movie_id')['rating'].mean()
+df1 = df1.groupby('movie_id').count()
+df1['mean'] = df1_mean.round(0)
+df1.drop('user_id', axis=1, inplace=True)
+df1.rename(columns={'rating': 'size', 'mean': 'target_rating'}, inplace=True)
+df1
 
 movieDict = {}
 with open(r'./ml-100k/u.item', encoding="ISO-8859-1") as f:
     temp = ''
-    genre=[]
+    genre = []
     for line in f:
         fields = line.rstrip('\n').split('|')
         genres = fields[5:25]
@@ -30,61 +28,128 @@ genre_sum = np.sum(genre * [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1
                    dtype=float) / 19
 
 df1['genre'] = genre_sum
+df1 = df1[['size', 'genre', 'target_rating']]
+df1
+dfx = df1[['size', 'genre']]  # ,'target_rating']]
+dfx
 
-##Datamanipulation
+from sklearn.preprocessing import MinMaxScaler
 
-#Eingrenzen der Daten
-df1 = df1[df1['size'] > 90]
-df1 = df1[df1['size'] < 220]
+scaler = MinMaxScaler()
+X_norm_scaled = scaler.fit_transform(dfx)
+df_x = pd.DataFrame(X_norm_scaled)
+df_x.index += 1
+df_x['target'] = df1['target_rating']
+df_x
 
-# Daten in Features und Targets defieren.
-X=df1.iloc[:, 0:2].values
-y=df1['target_rating'].values
+import plotly.express as px
 
-# Skalierung der Daten
-from sklearn.preprocessing import StandardScaler
-sc = StandardScaler()
-X = sc.fit_transform(X)
+fig = px.scatter(df_x, x=0, y=1, color='target')
+fig.show()
 
-df_x=pd.DataFrame(X)
-plt.scatter(df_x[0],df_x[1])
+df_x_new = df_x
+# df_x_new = df_x_new[df_x_new[0]>0.1]
+# df_x_new = df_x_new[df_x_new[0]<0.6]
+# df_x_new = df_x_new[df_x_new[1]>0.16]
+# df_x_new = df_x_new[df_x_new[1]<0.8]
 
-# Splitting des Datensets in Training set and Test set.
+df_x_new.info()
+
+import plotly.express as px
+
+fig = px.scatter(df_x_new, x=0, y=1, color='target')
+fig.show()
+
+X = df_x_new.iloc[:, 0:2].values
+y = df_x_new['target'].values
+X.shape
+
+# Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.40, random_state=0)
+X_test.shape
 
-## Modellierung
-# Berechnung des besten K Values
-def get_best_k(X_train,y_train,X_test,y_test):
-    errorrate=[]
-    for i in range(1,60):
-        knn=KNeighborsClassifier(n_neighbors=i)
-        knn.fit(X_train,y_train)
-        pred=knn.predict(X_test)
-        errorrate.append(np.mean(pred!=y_test))
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn.neighbors import KNeighborsClassifier
+def get_best_k(X_train, y_train, X_test, y_test):
+    errorrate = []
+    for i in range(1, 60):
+        knn = KNeighborsClassifier(n_neighbors=i)
+        knn.fit(X_train, y_train)
+        pred = knn.predict(X_test)
+        errorrate.append(np.mean(pred != y_test))
     return errorrate
 
-get_best_k(X_train,y_train,X_test,y_test)
 
-k_values = get_best_k(X_train,y_train,X_test,y_test)
+get_best_k(X_train, y_train, X_test, y_test)
 
-plt.figure(figsize=(12,8))
-plt.plot(k_values,marker='o')
+k_values = get_best_k(X_train, y_train, X_test, y_test)
 
+plt.figure(figsize=(12, 8))
+plt.plot(k_values, marker='o')
 
-# Fitting classifier für Training set
+# Fitting classifier to the Training set
 from sklearn.neighbors import KNeighborsClassifier
-classifier = KNeighborsClassifier(n_neighbors = 18)
+
+classifier = KNeighborsClassifier(n_neighbors=30)
 classifier.fit(X_train, y_train)
 
 # Predicting the Test set results
 pred = classifier.predict(X_test)
+pred.shape
 
+from sklearn.metrics import classification_report, confusion_matrix
 
-## Auswertung der Metriken
-from sklearn.metrics import classification_report,confusion_matrix
-matrix= confusion_matrix(y_test,pred)
+matrix = confusion_matrix(y_test, pred)
 print(matrix)
-report= classification_report(y_test,pred)
+report = classification_report(y_test, pred)
 print(report)
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+from sklearn import neighbors, datasets
+
+n_neighbors = 30
+h = 0.2
+
+# Create color maps
+cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#00AAFF'])
+cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#9cdeff'])
+
+# we create an instance of Neighbours Classifier and fit the data.
+# clf = neighbors.KNeighborsClassifier(n_neighbors, weights='distance')
+# clf.fit(X, y)
+
+# calculate min, max and limits
+x_grid = X_test[:, 0]
+y_grid = X_test[:, 1]
+xx, yy = np.meshgrid(x_grid, y_grid)
+
+# predict class using data and kNN classifier
+Z = classifier.predict(np.c_[xx.ravel(), yy.ravel()])
+
+# Put the result into a color plot
+Z = Z.reshape(xx.shape)
+plt.figure(figsize=[10, 6], dpi=75)
+plt.pcolormesh(xx, yy, Z)  # , cmap=cmap_light)
+
+# Plot also the training points
+plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold)
+plt.xlim(xx.min(), xx.max())
+plt.ylim(yy.min(), yy.max())
+plt.title("3-Class classification (k = %i)" % (n_neighbors))
+plt.show()
+
+Z
+
+X_test
+
+zlist = (Z.tolist())
+type(zlist)
+xx.shape
+
+pred.shape
