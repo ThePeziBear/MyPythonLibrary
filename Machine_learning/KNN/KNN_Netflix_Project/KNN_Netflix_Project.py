@@ -97,7 +97,7 @@ from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=30)
 classifier.fit(X_train, y_train)
 
-# Predicting the Test set results
+Predicting the Test set results
 pred = classifier.predict(X_test)
 pred.shape
 
@@ -120,16 +120,12 @@ h = 0.2
 cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#00AAFF'])
 cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#9cdeff'])
 
-# we create an instance of Neighbours Classifier and fit the data.
-# clf = neighbors.KNeighborsClassifier(n_neighbors, weights='distance')
-# clf.fit(X, y)
+#Select Points to visualize
+x_grid = X_test[:, 0] #select feature 1
+y_grid = X_test[:, 1] # select feature 2
+xx, yy = np.meshgrid(x_grid, y_grid) #create grid to visualize
 
-# calculate min, max and limits
-x_grid = X_test[:, 0]
-y_grid = X_test[:, 1]
-xx, yy = np.meshgrid(x_grid, y_grid)
-
-# predict class using data and kNN classifier
+# predict class using data and kNN classifier - should be simular to variable pred.
 Z = classifier.predict(np.c_[xx.ravel(), yy.ravel()])
 
 # Put the result into a color plot
@@ -143,13 +139,3 @@ plt.xlim(xx.min(), xx.max())
 plt.ylim(yy.min(), yy.max())
 plt.title("3-Class classification (k = %i)" % (n_neighbors))
 plt.show()
-
-Z
-
-X_test
-
-zlist = (Z.tolist())
-type(zlist)
-xx.shape
-
-pred.shape
