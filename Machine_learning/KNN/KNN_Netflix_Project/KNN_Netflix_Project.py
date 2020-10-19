@@ -111,30 +111,30 @@ print(report)
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
-from sklearn import neighbors, datasets
 
 n_neighbors = 30
-h = 0.2
+h=0.02
 
 # Create color maps
-cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#00AAFF'])
-cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#9cdeff'])
+cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA','#00AAFF'])
+cmap_bold = ListedColormap(['#FF0000', '#00FF00','#9cdeff'])
 
-#Select Points to visualize
-x_grid = X_test[:, 0] #select feature 1
-y_grid = X_test[:, 1] # select feature 2
-xx, yy = np.meshgrid(x_grid, y_grid) #create grid to visualize
+# calculate min, max and limits for the Visualation
+x_min, x_max = X_test[:, 0].min() - 1, X_test[:, 0].max() + 1
+y_min, y_max = X_test[:, 1].min() - 1, X_test[:, 1].max() + 1
+xx, yy = np.meshgrid(np.arange(x_min, x_max, h),np.arange(y_min, y_max, h))
 
-# predict class using data and kNN classifier - should be simular to variable pred.
+
+# predict class using data and kNN classifier to get the borders
 Z = classifier.predict(np.c_[xx.ravel(), yy.ravel()])
 
 # Put the result into a color plot
 Z = Z.reshape(xx.shape)
-plt.figure(figsize=[10, 6], dpi=75)
-plt.pcolormesh(xx, yy, Z)  # , cmap=cmap_light)
+plt.figure(figsize=[10,6],dpi=750)
+plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
 
-# Plot also the training points
-plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold)
+# Plot the Test Dataset points
+plt.scatter(X_test[:, 0], X_test[:, 1], c=y_test, cmap=cmap_bold)
 plt.xlim(xx.min(), xx.max())
 plt.ylim(yy.min(), yy.max())
 plt.title("3-Class classification (k = %i)" % (n_neighbors))
