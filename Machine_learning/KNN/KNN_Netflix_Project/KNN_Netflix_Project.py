@@ -119,7 +119,7 @@ h=0.02
 cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA','#00AAFF'])
 cmap_bold = ListedColormap(['#FF0000', '#00FF00','#9cdeff'])
 
-# calculate min, max and limits for the Visualation
+# calculate min, max and limits for the Vizualation-Chart
 x_min, x_max = X_test[:, 0].min() - 1, X_test[:, 0].max() + 1
 y_min, y_max = X_test[:, 1].min() - 1, X_test[:, 1].max() + 1
 xx, yy = np.meshgrid(np.arange(x_min, x_max, h),np.arange(y_min, y_max, h))
