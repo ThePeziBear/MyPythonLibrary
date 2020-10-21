@@ -17,6 +17,20 @@ df['PRICE'] = boston['target']
 X_n = df[['CRIM', 'ZN', 'INDUS','CHAS', 'NOX','RM', 'AGE','DIS','RAD','TAX','PTRATIO','B','LSTAT']]
 y_n = df['PRICE']
 
+
+#PCA Hauptkomponentenanalyse
+#Die Hauptkomponentenanalyse (engl. für Principal Component Analysis, PCA) wendest Du an, wenn Du einen großen Datensatz strukturieren bzw. vereinfachen möchtest.
+# Dabei versuchst Du die Gesamtzahl Deiner gemessenen Variablen zu reduzieren und trotzdem einen möglichst großen Anteil der Varianz aller Variablen zu erklären.
+# Siehe: https://www.statistik-nachhilfe.de/ratgeber/statistik/induktive-statistik/statistische-modellbildung-und-weitere-methoden/hauptkomponentenanalyse-pca
+# Siehe: https://de.wikipedia.org/wiki/Hauptkomponentenanalyse#:~:text=Die%20Hauptkomponentenanalyse%20(kurz%3A%20HKA%2C,ein%20Verfahren%20der%20multivariaten%20Statistik
+
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2, whiten=True).fit(X)
+X_pca = pca.transform(X)
+varianz_pca= pca.explained_variance_ratio_ #Erklärt wieviel Varianz aufgrund der Reduktion erhalten wurde
+print(X_pca.shape) #Zeigt dass die Daten auf 2Dimensionen reduziert wurden.
+
+
 # Training und Testdaten definieren
 from sklearn.model_selection import train_test_split
 X_train_n, X_test_n, y_train_n, y_test_n = train_test_split(X_n, y_n, test_size=0.4, random_state=101)
