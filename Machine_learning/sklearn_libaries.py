@@ -143,3 +143,22 @@ metrik_multivariante_regression = est.summary()
 #Regression mit variabeln Polynomfunktion 8 Grades
 from sklearn.metrics import r2_score
 r2_poly = r2_score(y_n, p8(X_n['AGE']))
+
+
+
+
+
+# K-fold Cross-validation.
+# Mit Hilfe der Kreuzvalidierung wird die Leistung eines Modells bewertet. Bei dem Train_Test_Split wird der Datensatz nur einmal gesplittet in train & test.
+# Bei er Kreuzvalidierung geschieht die Validierung von Train & Test mehrfach --> siehe Link:https://medium.com/@rajputankit22/cross-validation-machine-learning-models-with-scikit-learn-1a8d87441bd0
+# siehe Link: https://de.mathworks.com/discovery/cross-validation.html#:~:text=Kreuzvalidierung%20ist%20eine%20Technik%20zur,eines%20Modells%20beim%20Machine%20Learning.&text=Eine%20Teilmenge%20wird%20zum%20Validieren,f%C3%BCr%20die%20Validierung%20verwendet%20wird.
+from sklearn.model_selection import cross_val_score
+# cross_val_score wird hierfür das Modell übergeben, die gesamten Daten,
+# und die "korrekten" Werte. Zudem muss die Anzahl für K übergeben werden.
+scores = cross_val_score(log_model, X, y, cv=5)
+
+# Wie genau war jedes dieser Modelle?
+print(scores)
+
+# Und wie genau wird das resultierende Modell sein?
+print(scores.mean())
