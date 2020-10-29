@@ -27,6 +27,15 @@ Je größer die Varianz, desto größer ist die Streubreite der Daten.  Da die V
 Die Standardabweichung lässt sich in der Regel einfacher interpretieren, da sie in den gleichen Einheiten wie die Daten vorliegt. Angenommen, eine Stichprobe von Wartezeiten an einer Bushaltestelle weist einen Mittelwert von 15 Minuten und eine Varianz von 9 min2 auf.
  Da die Varianz nicht in der gleichen Einheit wie die Daten angegeben wird, wird sie oft mit ihrer Quadratwurzel angezeigt, der Standardabweichung. Eine Varianz von 9 Minuten2 entspricht einer Standardabweichung von 3 Minuten.
 
+
+-- P-Wert--
+Die H0-Hypothese ist die Gegenhypothese - die Fragestellung kann nicht bestätigt werden. Im Syntax ist der H0 kommt oft das "NICHT" vor. z.B. Die Einführung einer Studienberatung senkt NICHT die Abbruchquote.
+Die H1-Hypothese gibt die These die bewiesen gehört. z.B die Studienberatung senkt die Abbruchquote.
+
+Wenn jetzt der errechnete P-Wert über dem Signifikanzniveau (0,01,0,05 etc) ist, dann kann die H0 nicht verworfen werden. --> Das heißt die Studienberatung senkt NICHT die Abbruchquote.
+Ist der P-Wert darunter dann kann wurde signifikant bewiesen, dass die Studienberatung die Abbruchquote senkt.
+
+
 -- 4 Momente für das Erkennen einer Verteilung --
 + Erwartungswert, der die „Mitte“ der Verteilung angibt, den Wert, den die Zufallsvariable durchschnittlich also annimmt
 + Varianz als Maß für die Streuung, ist die mittlere quadratische Abweichung der Realisationen vom Erwartungswert
