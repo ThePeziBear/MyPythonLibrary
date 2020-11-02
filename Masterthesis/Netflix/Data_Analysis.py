@@ -28,3 +28,6 @@ last_record = np.full((1,len(df) - df_nan.iloc[-1, 0] - 1),movie_id)
 movie_np = np.append(movie_np, last_record)
 
 
+asdf
+
+
