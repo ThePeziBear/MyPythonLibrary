@@ -23,6 +23,6 @@ est=sm.OLS(y,X1).fit()
 summary_stat=est.summary()
 
 #plt.scatter(df['citric acid'],df['fixed acidity'])
-sns.stripplot(x='volatile acidity',y='fixed acidity', data=df_top_wine,hue='quality',palette='Set1')
+#sns.stripplot(x='volatile acidity',y='fixed acidity', data=df_top_wine,hue='quality',palette='Set1')
 
 
