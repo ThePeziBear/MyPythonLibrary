@@ -31,6 +31,7 @@ varianz_pca= pca.explained_variance_ratio_ #Erklärt wieviel Varianz aufgrund de
 print(X_pca.shape) #Zeigt dass die Daten auf 2Dimensionen reduziert wurden.
 
 
+
 # Training und Testdaten definieren
 from sklearn.model_selection import train_test_split
 X_train_n, X_test_n, y_train_n, y_test_n = train_test_split(X_n, y_n, test_size=0.4, random_state=101)
