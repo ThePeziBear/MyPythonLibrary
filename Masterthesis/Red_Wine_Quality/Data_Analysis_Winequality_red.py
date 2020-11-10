@@ -28,7 +28,7 @@ print(X_pca.shape) #Zeigt dass die Daten auf 6Dimensionen reduziert wurden.
 
 df_com=pd.DataFrame(X_pca,columns=['f1','f2'])
 df_com['quality']=y
-
+X=df_com[['f1','f2']]
 # Visualizing DATA
 categories = np.unique(df_com['quality'])
 colors = [plt.cm.tab10(i/float(len(categories)-1)) for i in range(len(categories))]
@@ -59,7 +59,22 @@ svc_model = SVC() #Instanzieren des Algorithmus
 svc_model.fit(X_train,y_train) #Training
 predictions_svm = svc_model.predict(X_test) # Vorhersage
 
-#Classifaction Metriken
+#Classifaction Metriken SVM
 from sklearn.metrics import classification_report,confusion_matrix
 matrix_svm= confusion_matrix(y_test,predictions_svm)
 report_svm= classification_report(y_test,predictions_svm)
+
+
+#KNN
+from sklearn.neighbors import KNeighborsClassifier
+
+knn = KNeighborsClassifier(n_neighbors=29,algorithm='auto',metric='euclidean') # Auswahl der Paramater für das Modell: Anzahl Nearst neighbor, Algorithmus(auto,kd_tree etc) Metric(euclidean distance, manhattan etc)
+knn.fit(X_train,y_train)
+predictions_knn =knn.predict(X_test)
+
+#Classifaction Metriken SVM
+matrix_knn= confusion_matrix(y_test,predictions_knn)
+report_knn= classification_report(y_test,predictions_knn)
+
+
+
