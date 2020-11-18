@@ -21,6 +21,7 @@ y_n = df['PRICE']
 #PCA Hauptkomponentenanalyse
 #Die Hauptkomponentenanalyse (engl. für Principal Component Analysis, PCA) wendest Du an, wenn Du einen großen Datensatz strukturieren bzw. vereinfachen möchtest.
 # Dabei versuchst Du die Gesamtzahl Deiner gemessenen Variablen zu reduzieren und trotzdem einen möglichst großen Anteil der Varianz aller Variablen zu erklären.
+#WICHTIG!: Sind die Daten nicht normalverteilt, dann ist die PCA nicht anzuwenden!!!!!!!!!!!!!!!!!!
 # Siehe: https://www.statistik-nachhilfe.de/ratgeber/statistik/induktive-statistik/statistische-modellbildung-und-weitere-methoden/hauptkomponentenanalyse-pca
 # Siehe: https://de.wikipedia.org/wiki/Hauptkomponentenanalyse#:~:text=Die%20Hauptkomponentenanalyse%20(kurz%3A%20HKA%2C,ein%20Verfahren%20der%20multivariaten%20Statistik
 
