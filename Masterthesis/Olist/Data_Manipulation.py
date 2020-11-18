@@ -23,9 +23,21 @@ df_count_items=df_count_items.sort_values(by='order_id', ascending=False)
 df_count_items=(df_count_items.iloc[:50]).sort_values(by='order_id', ascending=False)
 df_count_items
 
-ax = df_count_items['order_id'].plot.bar(stacked=True)
+barblot_product1 = df_count_items['order_id'].plot.bar(stacked=True)
 
 
 dfmerge = pd.merge(df_order_items,df_products, how='inner', left_on='product_id', right_on='product_id')#.set_index('Auswahl Spalte als Index')
 df_merge2=dfmerge[['product_category_name','product_id','order_item_id','price','seller_id']]
+barblot_product2 = df_count_items['order_id'].plot.bar(stacked=True)
+
 df_cool_stuff=df_merge2[df_merge2['product_category_name']=='cool_stuff']
+
+# Predictive Opportunities
+
+#1 Predict score_reviews
+df_count_reviews=df_order_reviews.groupby('review_score').count()
+barplot_review1 = df_count_reviews['review_id'].plot.bar(stacked=True)
+
+
+
+
