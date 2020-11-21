@@ -45,3 +45,6 @@ barplot_review1 = df_count_reviews['review_id'].plot.bar(stacked=True)
 
 
 
+
+
+
