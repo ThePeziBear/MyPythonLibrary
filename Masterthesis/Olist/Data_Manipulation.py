@@ -20,7 +20,7 @@ df_order_items
 
 df_count_items=df_order_items.groupby('product_id').count()
 df_count_items=df_count_items.sort_values(by='order_id', ascending=False)
-df_count_items=(df_count_items.iloc[:50]).sort_values(by='order_id', ascending=False)
+df_count_items=(df_count_items.iloc[:5000000]).sort_values(by='order_id', ascending=False)
 df_count_items
 
 barblot_product1 = df_count_items['order_id'].plot.bar(stacked=True)
@@ -39,12 +39,4 @@ df_count_reviews=df_order_reviews.groupby('review_score').count()
 barplot_review1 = df_count_reviews['review_id'].plot.bar(stacked=True)
 #Features:product_id,
 
-
-
-
-
-
-
-
-
-
+#2 Predict Sales aufgrund von Produktfotos Und/Oder Länge Produktnamen
