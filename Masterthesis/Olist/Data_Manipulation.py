@@ -40,3 +40,6 @@ barplot_review1 = df_count_reviews['review_id'].plot.bar(stacked=True)
 #Features:product_id,
 
 #2 Predict Sales aufgrund von Produktfotos Und/Oder Länge Produktnamen
+
+
+#3??
