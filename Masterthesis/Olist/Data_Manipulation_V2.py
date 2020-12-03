@@ -29,7 +29,7 @@ print(df.groupby(by='order_status').count()) #Take look at the distribution of o
 
 df = df[df['order_status'] == 'delivered'] # just delivered products are relevant for rating_review
 
-#
+# Creating Features for Dataset: Product avg Score, Product Price avg, Seller Score avg
 product_scored=df.groupby(by='product_id')['review_score'].mean()
 product_avg_price=df.groupby(by='product_id')['product_price'].mean()
 
@@ -38,9 +38,16 @@ df_product_calc=df_product_calc.reset_index()
 df_product_calc=df_product_calc.rename(columns={'review_score':'score_product_avg','product_price':'product_price_avg'})
 
 seller_scored=df.groupby(by='seller_id')['review_score'].mean()
+df_seller_scored=pd.DataFrame(data=seller_scored)
+df_seller_scored=df_seller_scored.reset_index()
+df_seller_scored=df_seller_scored.rename(columns={'review_score':'seller_score_avg'})
 
 
-print(type(df['review_score'].iloc[1]))
+
+df=df.merge(df_product_calc, on='product_id')
+df=df.merge(df_seller_scored, on='seller_id')
+
+
 
 
 
