@@ -65,10 +65,13 @@ X=df[['product_price','freight_value','product_name_lenght','product_description
 X=X.dropna()
 y = X['review_score']
 X=X.drop(['review_score'],axis=1)
-X_new = SelectKBest(chi2, k=2).fit_transform(X, y)
+chi2_selector = SelectKBest(chi2, k='all').fit_transform(X, y)
+scores = chi2_selector.scores_
+
+
 df_feat=pd.DataFrame(X_new)
 df_feat['reviews'] = y
-df_feat=df_feat.rename(columns= {0:'feat1',1:'feat2'})
+df_feat=df_feat.rename(columns= {0:'feat1',1:'feat2',2:'feat3',3:'feat4'})
 
 #sns.lmplot(x='feat1',y='feat2',data=df_feat,hue='reviews',palette='cubehelix',#hue: Trennung von kategorischen Parameter
 #            #markers=['o','v'], #Veränderung der Symbole
@@ -77,7 +80,7 @@ df_feat=df_feat.rename(columns= {0:'feat1',1:'feat2'})
 
 ## Train Test Split
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(df_feat[['feat1','feat2']], y, test_size=0.30, random_state=101) #Testsize (70%Training,30%Test), Random_state= Startwert für zufällige Datenauswahl
+X_train, X_test, y_train, y_test = train_test_split(df_feat[['feat1','feat2','feat3','feat4']], y, test_size=0.30, random_state=101) #Testsize (70%Training,30%Test), Random_state= Startwert für zufällige Datenauswahl
 
 
 #Decision Tree
